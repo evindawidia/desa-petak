@@ -45,10 +45,14 @@
 	<!--VENDOR SCRIPT-->
 	<script src="<?php echo base_url(); ?>public/assets/vendor/jquery/jquery-1.11.2.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/assets/vendor/plugins-compressed.js"></script>
-
+	<style>
+		.header-transparent {
+			background: #fff !important;
+		}
+	</style>
 </head>
 
-<body class="wide">
+<body class="wide" data-animation-icon="<?= base_url() ?>public/assets/images/svg-loaders/spin.svg">
 
 
 	<!-- WRAPPER -->

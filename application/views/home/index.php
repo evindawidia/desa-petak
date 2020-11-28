@@ -3,11 +3,11 @@
 
 	<div id="slider-carousel" class="boxed-slider">
 
-		<div style="background-image:url('homepages/corporate-v6/images/5.jpg');" class="owl-bg-img">
+		<div style="background-image:url('https://cdn-radar.jawapos.com/uploads/radarmojokerto/news/2017/07/13/balai-desa-termahal-dan-termegah-ini-fotonya_m_970.jpeg');" class="owl-bg-img">
 
 			<div class="container-fullscreen">
 				<div class="text-middle">
-					<div class="container">
+					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
 						<div class="text-center slider-content">
 							<h2 class="text-large m-b-0">BE POLO, BE SUCCESS</h2>
 							<h2 class="text-medium">INTERNATIONAL COMPANY</h2>
@@ -19,11 +19,24 @@
 				</div>
 			</div>
 		</div>
-		<div style="background-image:url('homepages/corporate-v6/images/6.jpg');" class="owl-bg-img">
+		<div style="background-image:url('https://stptrisakti.ac.id/wp-content/uploads/2016/05/20160531-desaPetak.jpg');" class="owl-bg-img">
 
 			<div class="container-fullscreen">
 				<div class="text-middle">
-					<div class="container">
+					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
+						<div class="slider-content">
+							<h2 class="text-large m-b-0">POLO<br /> CORPORATE</h2>
+							<h2 class="text-medium">INTERNATIONAL COMPANY</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="background-image:url('https://stptrisakti.ac.id/wp-content/uploads/2016/05/20160531-desaPetak.jpg');" class="owl-bg-img">
+
+			<div class="container-fullscreen">
+				<div class="text-middle">
+					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
 						<div class="slider-content">
 							<h2 class="text-large m-b-0">POLO<br /> CORPORATE</h2>
 							<h2 class="text-medium">INTERNATIONAL COMPANY</h2>
@@ -131,7 +144,7 @@
 					<div class="post-item" data-animation="fadeInUp" data-animation-delay="0">
 						<div class="post-image">
 							<a href="#">
-								<img alt="" src="images/mockup/1.jpg">
+								<img alt="" src="<?= base_url()?>/public/assets/images/mockup/1.jpg">
 							</a>
 						</div>
 						<div class="post-content-details">
@@ -177,7 +190,7 @@
 
 						<div class="post-image">
 							<a href="#">
-								<img alt="" src="images/mockup/2.jpg">
+								<img alt="" src="<?= base_url()?>/public/assets/images/mockup/2.jpg">
 							</a>
 						</div>
 
@@ -224,7 +237,7 @@
 					<div class="post-item" data-animation="fadeInUp" data-animation-delay="400">
 						<div class="post-image">
 							<a href="#">
-								<img alt="" src="images/mockup/3.jpg">
+								<img alt="" src="<?= base_url()?>/public/assets/images/mockup/3.jpg">
 							</a>
 						</div>
 						<div class="post-content-details">
