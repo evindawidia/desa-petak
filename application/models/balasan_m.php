@@ -3,6 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class balasan_m extends CI_Model
 {
+    private $table = "balasan";
+
     public $id_balasan = "";
     public $comment = "";
     public $date_created = "";
@@ -33,29 +35,59 @@ class balasan_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $stringlimit = "")
+    // funsi mendapat lebih dari satu baris
+    public function get($where = "", $groupby="", $orderby="" ,$stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
-
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
         if ($stringlimit != "") {
             $stringlimit = "limit " . $stringlimit;
         }
-
         //set untuk where
         if ($where != "") {
             $where = "where " . $where;
         }
+        if ($groupby != "") {
+            $groupby = "group by " . $groupby;
+        }
+        if ($orderby != "") {
+            $orderby = "order by " . $orderby;
+        }
 
-        $data = $this->db->query("select * from balasan " . $where . " $stringlimit")->result();
+        $data = $this->db->query("select * from balasan $where $groupby $orderby $stringlimit")->result();
+        $result = [];
         if (count($data) != 0) {
-            $result = [];
             foreach ($data as $row) {
                 array_push($result, $this->transform($row));
             }
-            return $result;
-        } else {
-            return null;
         }
+        return $result;
+    }
+
+    public function update($data){
+        $this->id_balasan =isset($data['id_balasan']) ?$data['id_balasan'] : $this->id_balasan;
+        $this->comment = isset($data['comment']) ?$data['comment'] : $this->comment;
+        $this->pengaduan_id = isset($data['pengaduan_id']) ?$data['pengaduan_id'] : $this->pengaduan_id;
+        $this->date_created = date("Y-m-d");
+    }
+
+    public function write(){
+        $array = json_decode(json_encode($this), true);
+        if ($this->id_balasan == "") {
+            $this->db->insert($this->table, $array);
+            $id = $this->db->insert_id();
+            $this->id_balasan = $id;
+            return $id;
+        }else{
+            $this->db->where('id_balasan', $this->id_balasan);
+            $this->db->update($this->table, $array);
+            return $this->id_balasan;
+        }
+        return $id;
+    }
+
+    public function delete(){
+        $this->db->delete('balasan', array('id_balasan' => $this->id_balasan)); 
+        return true;
     }
 }

@@ -30,29 +30,31 @@ class kat_berita_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $stringlimit = "")
+    public function get($where = "", $groupby="", $orderby="" ,$stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
-
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
         if ($stringlimit != "") {
             $stringlimit = "limit " . $stringlimit;
         }
-
         //set untuk where
         if ($where != "") {
             $where = "where " . $where;
         }
+        if ($groupby != "") {
+            $groupby = "group by " . $groupby;
+        }
+        if ($orderby != "") {
+            $orderby = "order by " . $orderby;
+        }
 
-        $data = $this->db->query("select * from kat_berita " . $where . " $stringlimit")->result();
+        $data = $this->db->query("select * from kat_berita $where $groupby $orderby $stringlimit")->result();
+        $result = [];
         if (count($data) != 0) {
-            $result = [];
             foreach ($data as $row) {
                 array_push($result, $this->transform($row));
             }
-            return $result;
-        } else {
-            return null;
         }
+        return $result;
     }
 }

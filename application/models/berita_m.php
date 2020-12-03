@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class berita_m extends CI_Model
 {
+
+    private $table = "berita";
+    private $defaultimg = "https://artema.co.id/wp-content/themes/ryse/assets/images/no-image/No-Image-Found-400x264.png";
+
     public $id_berita = "";
     public $judul_berita = "";
     public $content_berita = "";
@@ -13,7 +17,7 @@ class berita_m extends CI_Model
 
 
 
-    //fungsi untuk transformasi object dari CI menjadi model berita_m
+    //fungsi untuk transformasi object dari CI menjadi objek kita sendiri yaitu model berita_m
     public function transform($object)
     {
         $berita = new berita_m();
@@ -26,6 +30,7 @@ class berita_m extends CI_Model
         $berita->image = $object->image;
         return $berita;
     }
+    //fungsi untuk mendapatkan data 1 baris
     public function get_one($where)
     {
         $data = $this->db->query("SELECT * FROM berita WHERE " . $where . " limit 1")->result();
@@ -45,29 +50,78 @@ class berita_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
-
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
         if ($stringlimit != "") {
             $stringlimit = "limit " . $stringlimit;
         }
-
         //set untuk where
         if ($where != "") {
             $where = "where " . $where;
         }
+        if ($groupby != "") {
+            $groupby = "group by " . $groupby;
+        }
+        if ($orderby != "") {
+            $orderby = "order by " . $orderby;
+        }
 
-        $data = $this->db->query("select * from berita " . $where . " $stringlimit")->result();
+        $data = $this->db->query("select * from berita $where $groupby $orderby $stringlimit")->result();
+        $result = [];
         if (count($data) != 0) {
-            $result = [];
             foreach ($data as $row) {
                 array_push($result, $this->transform($row));
             }
-            return $result;
+        }
+        return $result;
+    }
+
+    public function update($data)
+    {
+        $this->id_berita = isset($data['id_berita']) ? $data['id_berita'] : $this->id_berita;
+        $this->judul_berita = isset($data['judul_berita']) ? $data['judul_berita'] : $this->judul_berita;
+        $this->content_berita = isset($data['content_berita']) ? $data['content_berita'] : $this->content_berita;
+        $this->date_created = isset($data['date_created']) ? $data['date_created'] : date("Y-m-d");
+        $this->url_segment = isset($data['url_segment']) ? $data['url_segment'] : implode(" ", explode(" ", $this->judul_berita));
+        $this->kat_berita_id = isset($data['kat_berita_id']) ? $data['kat_berita_id'] : $this->kat_berita_id;
+        $this->image = isset($data['image']) ? $data['image'] : $this->image;
+    }
+
+    public function write()
+    {
+        $array = json_decode(json_encode($this), true); //convert object to array menggonakan conversi object menjadi string json lalu dirubah lagi menjadi array
+
+        if ($this->id_berita == "") { //merupakan data baru
+            $this->db->insert($this->table, $array); // melakukan insert data menggunakan fungsi insert dari CI
+            $id = $this->db->insert_id(); // mendapatkan PRIMARY KEY TERAKHIR DARI DATA YANG KITA INPUT
+            $this->id_berita = $id;
+            return $id;
         } else {
-            return null;
+            $this->db->where('id_berita', $this->id_berita);
+            $this->db->update($this->table, $array);
+            return $this->id_berita;
+        }
+    }
+
+    public function delete()
+    {
+        $this->db->delete('berita', array('id_berita' => $this->id_berita));
+        return true;
+    }
+
+    public function getShortContent()
+    {
+        return substr($this->content_berita, 0, 150) . "...";
+    }
+
+    public function getImage()
+    {
+        if ($this->image != "") {
+            return $this->image;
+        } else {
+            return $this->defaultimg;
         }
     }
 }

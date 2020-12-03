@@ -18,8 +18,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="card card-body">
-                    <h3>LOGIN Admin Desa Petak</h3>
+                    <h3>LOGIN ADMIN DESA PETAK</h3>
                     <hr>
+                    <?= $this->session->flashdata('msg') ?>
                     <form action="<?= base_url() ?>admin/dologin" method="POST">
                         <div class="form-group"><label>Email </label><input type="email" name="email" class="form-control" required placeholder="Email"></div>
                         <div class="form-group"><label>Password </label><input type="password" name="password" class="form-control" required placeholder="Password"></div>
