@@ -35,15 +35,15 @@
                         <form action="<?= base_url() . "Admin/doaddsarana" ?>" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <labe>Uraian Sarana</labe>
+                                    <label>Uraian Sarana</label>
                                     <input placeholder="Uraian" type="text" name="uraian_sarana" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <labe>Volume</labe>
+                                    <label>Volume</label>
                                     <input placeholder="Volume" type="text" min="0" name="volume" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <labe>Satuan</labe>
+                                    <label>Satuan</label>
                                     <select name="satuan_id" class="form-control" required>
                                         <?php foreach ($Satuan as $s) { ?>
                                             <option value="<?= $s->id_satuan ?>">
@@ -53,7 +53,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <labe>Kategori Sarana</labe>
+                                    <label>Kategori Sarana</label>
                                     <select name="kat_sarana_id" class="form-control" required>
                                         <?php foreach ($KatSarana as $k) { ?>
                                             <option value="<?= $k->id_kat_sarana ?>">

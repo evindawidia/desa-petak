@@ -3,12 +3,12 @@
     <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-5">
-                <h4 class="page-title">SDA</h4>
+                <h4 class="page-title">Organisasi</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url() ?>Admin/">Admin</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">SDA</li>
+                            <li class="breadcrumb-item active" aria-current="page">Organisasi</li>
                         </ol>
                     </nav>
                 </div>
@@ -27,33 +27,33 @@
                         <!-- title -->
                         <div class="d-md-flex align-items-center">
                             <div>
-                                <h4 class="card-title">Tambah Data SDA</h4>
-                                <h5 class="card-subtitle">Tambah Data SDA Terbaru Desa Petak</h5>
+                                <h4 class="card-title">Tambah Data Organisasi</h4>
+                                <h5 class="card-subtitle">Tambah Data Organisasi Terbaru Desa Petak</h5>
                             </div>
                         </div>
                         <!-- title -->
-                        <form action="<?= base_url() . "Admin/doaddsda" ?>" method="POST">
+                        <form action="<?= base_url() . "Admin/doeditorganisasi?id_organisasi=" . $organisasi->id_organisasi ?>" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Uraian SDA</label>
-                                    <input placeholder="Uraian" type="text" name="uraian_sda" class="form-control" required>
+                                    <label>Uraian Organisasi</label>
+                                    <input placeholder="Uraian" value="<?= $organisasi->uraian_organisasi ?>" type="text" name="uraian_organisasi" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Volume</label>
-                                    <input placeholder="Volume" type="text" min="0" name="volume" class="form-control" required>
+                                    <input placeholder="Volume" value="<?= $organisasi->volume ?>" type="text" min="0" name="volume" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Satuan</label>
                                     <select name="satuan_id" class="form-control" required>
                                         <?php foreach ($Satuan as $s) { ?>
-                                            <option value="<?= $s->id_satuan ?>">
+                                            <option value="<?= $s->id_satuan ?>" <?= $s->id_satuan == $organisasi->satuan_id ? "selected" : "" ?>>
                                                 <?= $s->jenis_satuan ?>
                                             </option>
                                         <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success btn-block">Add</button>
+                                    <button type="submit" class="btn btn-success btn-block">Update</button>
                                 </div>
                             </div>
                         </form>

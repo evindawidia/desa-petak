@@ -3,12 +3,12 @@
     <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-5">
-                <h4 class="page-title">SDA</h4>
+                <h4 class="page-title">Organisasi</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url() ?>Admin/">Admin</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">SDA</li>
+                            <li class="breadcrumb-item active" aria-current="page">Organisasi</li>
                         </ol>
                     </nav>
                 </div>
@@ -27,16 +27,16 @@
                         <!-- title -->
                         <div class="d-md-flex align-items-center">
                             <div>
-                                <h4 class="card-title">Tambah Data SDA</h4>
-                                <h5 class="card-subtitle">Tambah Data SDA Terbaru Desa Petak</h5>
+                                <h4 class="card-title">Tambah Data Organisasi</h4>
+                                <h5 class="card-subtitle">Tambah Data Organisasi Terbaru Desa Petak</h5>
                             </div>
                         </div>
                         <!-- title -->
-                        <form action="<?= base_url() . "Admin/doaddsda" ?>" method="POST">
+                        <form action="<?= base_url() . "Admin/doaddorganisasi" ?>" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Uraian SDA</label>
-                                    <input placeholder="Uraian" type="text" name="uraian_sda" class="form-control" required>
+                                    <label>Uraian Organisasi</label>
+                                    <input placeholder="Uraian" type="text" name="uraian_organisasi" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Volume</label>

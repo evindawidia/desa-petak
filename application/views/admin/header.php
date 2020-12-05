@@ -160,8 +160,8 @@
 						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/sda" aria-expanded="false"><i class="fa fa-leaf"></i><span class="hide-menu">Data SDA</span></a></li>
 						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/sdm" aria-expanded="false"><i class="fa fa-male"></i><span class="hide-menu">Data SDM</span></a></li>
 						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/sarana" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">Data Sarana Prasarana</span></a>
-						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/sarana" aria-expanded="false"><i class="fa fa-sitemap"></i><span class="hide-menu">Data Organisasi</span></a>
-						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/sarana" aria-expanded="false"><i class="fa fa-heart"></i><span class="hide-menu">Data Sosial Budaya</span></a>
+						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/organisasi" aria-expanded="false"><i class="fa fa-sitemap"></i><span class="hide-menu">Data Organisasi</span></a>
+						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>/Admin/sosbud" aria-expanded="false"><i class="fa fa-heart"></i><span class="hide-menu">Data Sosial Budaya</span></a>
 						</li>
 					</ul>
 

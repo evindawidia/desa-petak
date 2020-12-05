@@ -635,7 +635,7 @@ class Admin extends CI_Controller
             return;
         }
         $id = $_GET['id_organisasi'];
-        $data['organisasi'] = $this->organisasi->get_one("id_organisasi = '$id'");
+        $organisasi = $this->organisasi->get_one("id_organisasi = '$id'");
         $organisasi->delete();
         $this->writemsg("Delete Success", 1);
         redirect("Admin/organisasi");
