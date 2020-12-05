@@ -15,6 +15,9 @@ class Admin extends CI_Controller
         $this->load->model("sdm_m", "sdm");
         $this->load->model("kat_sdm_m", "kat_sdm");
         $this->load->model("satuan_m", "satuan");
+        $this->load->model("sarana_m", "sarana");
+        $this->load->model("kat_sarana_m", "kat_sarana");
+        $this->load->model("organisasi_m", "organisasi");
     }
 
     public function ceklogin()
@@ -56,7 +59,7 @@ class Admin extends CI_Controller
             redirect("Admin/login");
             return;
         }
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         $data['Berita'] = $this->berita->get("", "", "id_berita Desc");
         $this->load->view("admin/header", $data);
         $this->load->view("admin/index", $data);
@@ -113,7 +116,7 @@ class Admin extends CI_Controller
     public function berita()
     {
         $this->ceklogin();
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         $data['Berita'] = $this->berita->get("", "", "id_berita Desc");
         $this->load->view("admin/header", $data);
         $this->load->view("admin/berita", $data);
@@ -222,7 +225,7 @@ class Admin extends CI_Controller
     public function pengaduan()
     {
         $this->ceklogin();
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         $data['pengaduan'] = $this->pengaduan->get("", "", "id_pengaduan DESC");
         $this->load->view("admin/header", $data);
         $this->load->view("admin/pengaduan", $data);
@@ -232,7 +235,7 @@ class Admin extends CI_Controller
     public function balaspengaduan()
     {
         $this->ceklogin();
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         if (!isset($_GET['id'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/pengaduan");
@@ -250,7 +253,7 @@ class Admin extends CI_Controller
     public function doaddbalasan()
     {
         $this->ceklogin();
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         if (!isset($_GET['id'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/pengaduan");
@@ -310,7 +313,7 @@ class Admin extends CI_Controller
     public function sda()
     {
         $this->ceklogin();
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         $data['sda'] = $this->sda->get("", "", "id_sda DESC");
         $this->load->view("admin/header", $data);
         $this->load->view("admin/sda", $data);
@@ -396,7 +399,7 @@ class Admin extends CI_Controller
     public function sdm()
     {
         $this->ceklogin();
-        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['UserLogin'] = $this->getdatalogin();
         $data['sdm'] = $this->sdm->get("", "", "id_sdm DESC");
         $this->load->view("admin/header", $data);
         $this->load->view("admin/sdm", $data);
@@ -426,12 +429,12 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['id_sdm'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/sdm");
             return;
         }
-        $id = $_GET['id'];
+        $id = $_GET['id_sdm'];
         $sdm = $this->sdm->get_one("id_sdm ='$id'");
         $sdm->delete();
         $this->writemsg("Delete Success", 1);
@@ -441,12 +444,12 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['id_sdm'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/sdm");
             return;
         }
-        $id = $_GET['id'];
+        $id = $_GET['id_sdm'];
         $sdm = $this->sdm->get_one("id_sdm = '$id'");
         $data['sdm'] = $sdm;
         $data['Satuan'] = $this->satuan->get();
@@ -459,12 +462,12 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['id_sdm'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/sdm");
             return;
         }
-        $id = $_GET['id'];
+        $id = $_GET['id_sdm'];
         $sdm = $this->sdm->get_one("id_sdm = '$id'");
         if (!$sdm) {
             $this->writemsg("Data not found !!", 2);
@@ -474,6 +477,167 @@ class Admin extends CI_Controller
         $sdm->update($_POST);
         $sdm->write();
         $this->writemsg("Edit Success", 1);
-        redirect("Admin/editsdm?id=$id");
+        redirect("Admin/editsdm?id_sdm=$id");
+    }
+
+    public function sarana()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['sarana'] = $this->sarana->get("", "", "id_sarana DESC");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sarana", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function addsarana()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        $data['KatSarana'] = $this->kat_sarana->get();
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/saranaform", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doaddsarana()
+    {
+        $this->ceklogin();
+        $newsarana = new sarana_m();
+        $newsarana->update($_POST);
+        $newsarana->write();
+        $this->writemsg("Process Success", 1);
+        redirect("Admin/sarana");
+    }
+    public function editsarana()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        $data['KatSarana'] = $this->kat_sarana->get();
+        if (!isset($_GET['id_sarana'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sarana");
+            return;
+        }
+        $id = $_GET['id_sarana'];
+        $data['sarana'] = $this->sarana->get_one("id_sarana = '$id'");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/saranaedit", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doeditsarana()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id_sarana'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sarana");
+            return;
+        }
+        $id = $_GET['id_sarana'];
+        $sarana = $this->sarana->get_one("id_sarana = '$id'");
+        if (!$sarana) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sarana");
+            return;
+        }
+        $sarana->update($_POST);
+        $sarana->write();
+        $this->writemsg("Edit Success", 1);
+        redirect("Admin/editsarana?id_sarana=$id");
+    }
+    public function deletesarana()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id_sarana'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sarana");
+            return;
+        }
+        $id = $_GET['id_sarana'];
+        $sarana = $this->sarana->get_one("id_sarana = '$id'");
+        $sarana->delete();
+        $this->writemsg("Delete Success", 1);
+        redirect("Admin/sarana");
+    }
+    public function organisasi()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['organisasi'] = $this->organisasi->get("", "", "id_organisasi DESC");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/organisasi", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function addorganisasi()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/organisasiform", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doaddorganisasi()
+    {
+        $this->ceklogin();
+        $neworganisasi = new organisasi_m();
+        $neworganisasi->update($_POST);
+        $neworganisasi->write();
+        redirect("Admin/organisasi");
+    }
+    public function editorganisasi()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        if (!isset($_GET['id_organisasi'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/organisasi");
+            return;
+        }
+        $id = $_GET['id_organisasi'];
+        $data['organisasi'] = $this->organisasi->get_one("id_organisasi = '$id'");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/organisasiedit", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doeditorganisasi()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        if (!isset($_GET['id_organisasi'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/organisasi");
+            return;
+        }
+        $id = $_GET['id_organisasi'];
+        $organisasi = $this->organisasi->get_one("id_organisasi = '$id'");
+        if (!$organisasi) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/organisasi");
+            return;
+        }
+        $organisasi->update($_POST);
+        $organisasi->write();
+        $this->writemsg("Edit Success", 1);
+        redirect("Admin/editorganisasi?id_organisasi=$id");
+    }
+    public function deleteorganisasi()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id_organisasi'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/organisasi");
+            return;
+        }
+        $id = $_GET['id_organisasi'];
+        $data['organisasi'] = $this->organisasi->get_one("id_organisasi = '$id'");
+        $organisasi->delete();
+        $this->writemsg("Delete Success", 1);
+        redirect("Admin/organisasi");
     }
 }

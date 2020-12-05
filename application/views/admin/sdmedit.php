@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <!-- title -->
-                        <form action="<?= base_url() . "Admin/doeditsdm?id=" . $sdm->id_sdm ?>" method="POST">
+                        <form action="<?= base_url() . "Admin/doeditsdm?id_sdm=" . $sdm->id_sdm ?>" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Uraian SDM</label>

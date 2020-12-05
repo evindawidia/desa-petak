@@ -3,12 +3,12 @@
     <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-5">
-                <h4 class="page-title">SDA</h4>
+                <h4 class="page-title">Sarana Prasarana</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url() ?>Admin/">Admin</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">SDA</li>
+                            <li class="breadcrumb-item active" aria-current="page">Sarana Prasarana</li>
                         </ol>
                     </nav>
                 </div>
@@ -27,27 +27,37 @@
                         <!-- title -->
                         <div class="d-md-flex align-items-center">
                             <div>
-                                <h4 class="card-title">Tambah Data SDA</h4>
-                                <h5 class="card-subtitle">Tambah Data SDA Terbaru Desa Petak</h5>
+                                <h4 class="card-title">Tambah Data Sarana Prasarana</h4>
+                                <h5 class="card-subtitle">Tambah Data Sarana Prasarana Terbaru Desa Petak</h5>
                             </div>
                         </div>
                         <!-- title -->
-                        <form action="<?= base_url() . "Admin/doeditsda?id=" . $sda->id_sda ?>" method="POST">
+                        <form action="<?= base_url() . "Admin/doeditsarana?id_sarana=" . $sarana->id_sarana ?>" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Uraian SDA</label>
-                                    <input placeholder="Uraian" value="<?= $sda->uraian_sda ?>" type="text" name="uraian_sda" class="form-control" required>
+                                    <label>Uraian Sarana</label>
+                                    <input placeholder="Uraian" value="<?= $sarana->uraian_sarana ?>" type="text" name="uraian_sarana" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Volume</label>
-                                    <input placeholder="Volume" value="<?= $sda->volume ?>" type="text" min="0" name="volume" class="form-control" required>
+                                    <input placeholder="Volume" value="<?= $sarana->volume ?>" type="text" min="0" name="volume" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Satuan</label>
                                     <select name="satuan_id" class="form-control" required>
                                         <?php foreach ($Satuan as $s) { ?>
-                                            <option value="<?= $s->id_satuan ?>" <?= $s->id_satuan == $sda->satuan_id ? "selected" : "" ?>>
+                                            <option value="<?= $s->id_satuan ?>" <?= $s->id_satuan == $sarana->satuan_id ? "selected" : "" ?>>
                                                 <?= $s->jenis_satuan ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kategori Sarana</label>
+                                    <select name="kat_sarana_id" class="form-control" required>
+                                        <?php foreach ($KatSarana as $k) { ?>
+                                            <option value="<?= $k->id_kat_sarana ?>" <?= $k->id_kat_sarana == $sarana->kat_sarana_id ? "selected" : "" ?>>
+                                                <?= $k->kat_sarana ?>
                                             </option>
                                         <?php } ?>
                                     </select>
