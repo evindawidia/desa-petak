@@ -18,6 +18,7 @@ class Admin extends CI_Controller
         $this->load->model("sarana_m", "sarana");
         $this->load->model("kat_sarana_m", "kat_sarana");
         $this->load->model("organisasi_m", "organisasi");
+        $this->load->model("sosbud_m", "sosbud");
     }
 
     public function ceklogin()
@@ -410,7 +411,7 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        $data['Satuan'] = $this->satuan->get();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '4' OR id_satuan = '6'");
         $data['KatSDM'] = $this->kat_sdm->get();
         $this->load->view("admin/header", $data);
         $this->load->view("admin/sdmform", $data);
@@ -444,6 +445,8 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '4' OR id_satuan = '6'");
+        $data['KatSDM'] = $this->kat_sdm->get();
         if (!isset($_GET['id_sdm'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/sdm");
@@ -452,8 +455,6 @@ class Admin extends CI_Controller
         $id = $_GET['id_sdm'];
         $sdm = $this->sdm->get_one("id_sdm = '$id'");
         $data['sdm'] = $sdm;
-        $data['Satuan'] = $this->satuan->get();
-        $data['KatSDM'] = $this->kat_sdm->get();
         $this->load->view("admin/header", $data);
         $this->load->view("admin/sdmedit", $data);
         $this->load->view("admin/footer", $data);
@@ -493,7 +494,7 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        $data['Satuan'] = $this->satuan->get();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '5' OR id_satuan = '6'");
         $data['KatSarana'] = $this->kat_sarana->get();
         $this->load->view("admin/header", $data);
         $this->load->view("admin/saranaform", $data);
@@ -512,7 +513,7 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        $data['Satuan'] = $this->satuan->get();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '5' OR id_satuan = '6'");
         $data['KatSarana'] = $this->kat_sarana->get();
         if (!isset($_GET['id_sarana'])) {
             $this->writemsg("Data not found !!", 2);
@@ -574,7 +575,7 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        $data['Satuan'] = $this->satuan->get();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '4' OR id_satuan = '6'");
         $this->load->view("admin/header", $data);
         $this->load->view("admin/organisasiform", $data);
         $this->load->view("admin/footer", $data);
@@ -591,7 +592,7 @@ class Admin extends CI_Controller
     {
         $this->ceklogin();
         $data['UserLogin'] = $this->getdatalogin();
-        $data['Satuan'] = $this->satuan->get();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '4' OR id_satuan = '6'");
         if (!isset($_GET['id_organisasi'])) {
             $this->writemsg("Data not found !!", 2);
             redirect("Admin/organisasi");
@@ -639,5 +640,84 @@ class Admin extends CI_Controller
         $organisasi->delete();
         $this->writemsg("Delete Success", 1);
         redirect("Admin/organisasi");
+    }
+    public function sosbud()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['sosbud'] = $this->sosbud->get("", "", "id_sosbud DESC");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sosbud", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function addsosbud()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '4' OR id_satuan = '6'");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sosbudform", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doaddsosbud()
+    {
+        $this->ceklogin();
+        $newsosbud = new sosbud_m();
+        $newsosbud->update($_POST);
+        $newsosbud->write();
+        redirect("Admin/sosbud");
+    }
+    public function editsosbud()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get("id_satuan = '4' OR id_satuan = '6'");
+        if (!isset($_GET['id_sosbud'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sosbud");
+            return;
+        }
+        $id = $_GET['id_sosbud'];
+        $data['sosbud'] = $this->sosbud->get_one("id_sosbud = '$id'");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sosbudedit", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doeditsosbud()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        if (!isset($_GET['id_sosbud'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sosbud");
+            return;
+        }
+        $id = $_GET['id_sosbud'];
+        $sosbud = $this->sosbud->get_one("id_sosbud = '$id'");
+        if (!$sosbud) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sosbud");
+            return;
+        }
+        $sosbud->update($_POST);
+        $sosbud->write();
+        $this->writemsg("Edit Success", 1);
+        redirect("Admin/editsosbud?id_sosbud=$id");
+    }
+    public function deletesosbud()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id_sosbud'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sosbud");
+            return;
+        }
+        $id = $_GET['id_sosbud'];
+        $sosbud = $this->sosbud->get_one("id_sosbud = '$id'");
+        $sosbud->delete();
+        $this->writemsg("Delete Success", 1);
+        redirect("Admin/sosbud");
     }
 }
