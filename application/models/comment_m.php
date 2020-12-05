@@ -3,6 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class comment_m extends CI_Model
 {
+    private $table = "comment";
+
     public $id_comment = "";
     public $comment = "";
     public $sender_name = "";
@@ -40,7 +42,7 @@ class comment_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
 
@@ -53,16 +55,52 @@ class comment_m extends CI_Model
         if ($where != "") {
             $where = "where " . $where;
         }
+        if ($groupby != "") {
+            $groupby = "group by " . $groupby;
+        }
+        if ($orderby != "") {
+            $orderby = "order by " . $orderby;
+        }
 
-        $data = $this->db->query("select * from comment " . $where . " $stringlimit")->result();
+        $data = $this->db->query("select * from comment $where $groupby $orderby $stringlimit")->result();
+        $result = [];
         if (count($data) != 0) {
-            $result = [];
             foreach ($data as $row) {
                 array_push($result, $this->transform($row));
             }
-            return $result;
-        } else {
-            return null;
         }
+        return $result;
+    }
+    public function update($data){
+        $this->id_comment =isset($data['id_comment']) ?$data['id_comment'] : $this->id_comment;
+        $this->comment = isset($data['comment']) ?$data['comment'] : $this->comment;
+        $this->sender_name = isset($data['sender_name']) ?$data['sender_name'] : $this->sender_name;
+        $this->address = isset($data['address']) ?$data['address'] : $this->address;
+        $this->date_created = date("Y-m-d");
+        $this->berita_id = isset($data['id_berita']) ?$data['id_berita'] : $this->id_berita;
+    }
+
+    public function write(){
+        $array = json_decode(json_encode($this), true);
+        if ($this->id_comment == "") {
+            $this->db->insert($this->table, $array);
+            $id = $this->db->insert_id();
+            $this->id_comment = $id;
+            return $id;
+        }else{
+            $this->db->where('id_comment', $this->id_comment);
+            $this->db->update($this->table, $array);
+            return $this->id_comment;
+        }
+        return $id;
+    }
+
+    public function delete(){
+        $this->db->delete('comment', array('id_comment' => $this->id_comment)); 
+        return true;
+    }
+    public function getBerita()
+    {
+        return $this->berita->get_one("id_berita = '".$this->berita_id."'")
     }
 }

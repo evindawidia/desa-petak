@@ -42,7 +42,7 @@ class pengaduan_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $groupby="", $orderby="" ,$stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
@@ -70,22 +70,24 @@ class pengaduan_m extends CI_Model
         return $result;
     }
 
-    public function update($data){
-        $this->id_pengaduan =isset($data['id_pengaduan']) ?$data['id_pengaduan'] : $this->id_pengaduan;
-        $this->sender_name = isset($data['sender_name']) ?$data['sender_name'] : $this->sender_name;
-        $this->nik = isset($data['nik']) ?$data['nik'] : $this->nik;
-        $this->comment = isset($data['comment']) ?$data['comment'] : $this->comment;
-        $this->address = isset($data['address']) ?$data['address'] : $this->address;
+    public function update($data)
+    {
+        $this->id_pengaduan = isset($data['id_pengaduan']) ? $data['id_pengaduan'] : $this->id_pengaduan;
+        $this->sender_name = isset($data['sender_name']) ? $data['sender_name'] : $this->sender_name;
+        $this->nik = isset($data['nik']) ? $data['nik'] : $this->nik;
+        $this->comment = isset($data['comment']) ? $data['comment'] : $this->comment;
+        $this->address = isset($data['address']) ? $data['address'] : $this->address;
         $this->date_created = date("Y-m-d");
     }
 
-    public function write(){
+    public function write()
+    {
         $array = json_decode(json_encode($this), true);
         if ($this->id_pengaduan == "") {
             $this->db->insert($this->table, $array);
             $id = $this->db->insert_id();
             $this->id_pengaduan = $id;
-        }else{
+        } else {
             $this->db->where('id_pengaduan', $this->id_pengaduan);
             $this->db->update($this->table, $array);
             return $this->id_pengaduan;
@@ -93,17 +95,17 @@ class pengaduan_m extends CI_Model
         return $id;
     }
 
-    public function getBalasan(){
-        return $this->balasan->get("pengaduan_id = '".$this->id_pengaduan."'");
-    }
-    
-    public function delete(){
-        foreach ($this->getBalasan() as $bl){
-            $bl->delete();
-        }
-        $this->db->delete('pengaduan', array('id_pengaduan' => $this->id_pengaduan)); 
-        return true;
+    public function getBalasan()
+    {
+        return $this->balasan->get("pengaduan_id = '" . $this->id_pengaduan . "'");
     }
 
-    
+    public function delete()
+    {
+        foreach ($this->getBalasan() as $bl) {
+            $bl->delete();
+        }
+        $this->db->delete('pengaduan', array('id_pengaduan' => $this->id_pengaduan));
+        return true;
+    }
 }

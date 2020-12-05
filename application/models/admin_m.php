@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class admin_m extends CI_Model
 {
+    private $table = "admin";
     public $id_user = "";
     public $nama = "";
     public $password = "";
@@ -36,7 +37,7 @@ class admin_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
 
@@ -49,16 +50,50 @@ class admin_m extends CI_Model
         if ($where != "") {
             $where = "where " . $where;
         }
+        if ($groupby != "") {
+            $groupby = "group by " . $groupby;
+        }
+        if ($orderby != "") {
+            $orderby = "order by " . $orderby;
+        }
 
-        $data = $this->db->query("select * from admin " . $where . " $stringlimit")->result();
+        $data = $this->db->query("select * from admin $where $groupby $orderby $stringlimit")->result();
+        $result = [];
         if (count($data) != 0) {
-            $result = [];
             foreach ($data as $row) {
                 array_push($result, $this->transform($row));
             }
-            return $result;
-        } else {
-            return null;
         }
+        return $result;
+    }
+
+    public function update($data)
+    {
+        $this->id_user = isset($data['id_user']) ? $data['id_user'] : $this->id_user;
+        $this->nama = isset($data['nama']) ? $data['nama'] : $this->nama;
+        $this->password = isset($data['password']) ? $data['password'] : $this->password;
+        $this->email = isset($data['email']) ? $data['email'] : $this->email;
+        $this->date_created = date("Y-m-d");
+    }
+
+    public function write()
+    {
+        $array = json_decode(json_encode($this), true);
+        if ($this->id_user == "") {
+            $this->db->insert($this->table, $array);
+            $id = $this->db->insert_id();
+            $this->id_user = $id;
+            return $id;
+        } else {
+            $this->db->where('id_user', $this->id_user);
+            $this->db->update($this->table, $array);
+            return $this->id_user;
+        }
+    }
+
+    public function delete()
+    {
+        $this->db->delete('admin', array('id_user' => $this->id_user));
+        return true;
     }
 }

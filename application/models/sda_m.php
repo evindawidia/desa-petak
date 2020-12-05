@@ -38,7 +38,7 @@ class sda_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $groupby="", $orderby="" ,$stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
@@ -66,39 +66,43 @@ class sda_m extends CI_Model
         return $result;
     }
 
-    public function update($data){
-        $this->id_sda = isset($data['id_sda']) ?$data['id_sda'] : $this->id_sda;
-        $this->uraian_sda = isset($data['uraian_sda']) ?$data['uraian_sda'] : $this->uraian_sda;
-        $this->volume = isset($data['volume']) ?$data['volume'] : $this->volume;
-        $this->satuan_id = isset($data['satuan_id']) ?$data['satuan_id'] : $this->satuan_id;
+    public function update($data)
+    {
+        $this->id_sda = isset($data['id_sda']) ? $data['id_sda'] : $this->id_sda;
+        $this->uraian_sda = isset($data['uraian_sda']) ? $data['uraian_sda'] : $this->uraian_sda;
+        $this->volume = isset($data['volume']) ? $data['volume'] : $this->volume;
+        $this->satuan_id = isset($data['satuan_id']) ? $data['satuan_id'] : $this->satuan_id;
         $this->date_created = date("Y-m-d");
     }
 
-    public function write(){
+    public function write()
+    {
         $array = json_decode(json_encode($this), true);
         if ($this->id_sda == "") {
             $this->db->insert($this->table, $array);
             $id = $this->db->insert_id();
             $this->id_sda = $id;
             return $id;
-        }else{
+        } else {
             $this->db->where('id_sda', $this->id_sda);
             $this->db->update($this->table, $array);
             return $this->id_sda;
         }
-        return $id;
     }
 
-    public function delete(){
-        $this->db->delete('sda', array('id_sda' => $this->id_sda)); 
+    public function delete()
+    {
+        $this->db->delete('sda', array('id_sda' => $this->id_sda));
         return true;
     }
 
-    public function getSatuan(){
-        return $this->satuan->get_one("id_satuan = '".$this->satuan_id."'");
+    public function getSatuan()
+    {
+        return $this->satuan->get_one("id_satuan = '" . $this->satuan_id . "'");
     }
 
-    public function getSatuanVolume(){
-        return $this->volume." ".$this->getSatuan()->jenis_satuan;
+    public function getSatuanVolume()
+    {
+        return $this->volume . " " . $this->getSatuan()->jenis_satuan;
     }
 }

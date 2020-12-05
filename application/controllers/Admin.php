@@ -13,6 +13,7 @@ class Admin extends CI_Controller
         $this->load->model("balasan_m", "balasan");
         $this->load->model("sda_m", "sda");
         $this->load->model("sdm_m", "sdm");
+        $this->load->model("kat_sdm_m", "kat_sdm");
         $this->load->model("satuan_m", "satuan");
     }
 
@@ -108,17 +109,7 @@ class Admin extends CI_Controller
             return null;
         }
     }
-
-    public function addberita()
-    {
-        $this->ceklogin();
-        $data['UserLogin'] = $this->getdatalogin();
-        $data['kat_berita'] = $this->kat_berita->get();
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/beritaform', $data);
-        $this->load->view('admin/footer', $data);
-    }
-
+    // BERTIA
     public function berita()
     {
         $this->ceklogin();
@@ -127,6 +118,15 @@ class Admin extends CI_Controller
         $this->load->view("admin/header", $data);
         $this->load->view("admin/berita", $data);
         $this->load->view("admin/footer", $data);
+    }
+    public function addberita()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['kat_berita'] = $this->kat_berita->get();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/beritaform', $data);
+        $this->load->view('admin/footer', $data);
     }
 
     public function doaddberita()
@@ -148,6 +148,25 @@ class Admin extends CI_Controller
         $id = $newBerita->write();
         $this->writemsg("Add Berita Success", 1);
         redirect("Admin/berita");
+    }
+    public function editberita()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['kat_berita'] = $this->kat_berita->get();
+        if (!isset($_GET['id'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/berita");
+            return;
+        }
+
+        $id = $_GET['id'];
+        $data['id'] = $id;
+        $berita = $this->berita->get_one("id_berita = '$id'");
+        $data['berita'] = $berita;
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/beritaedit", $data);
+        $this->load->view("admin/footer", $data);
     }
 
     public function doeditberita()
@@ -198,26 +217,6 @@ class Admin extends CI_Controller
         $berita->delete();
         $this->writemsg("Delete Success", 1);
         redirect("Admin/berita");
-    }
-
-    public function editberita()
-    {
-        $this->ceklogin();
-        $data['UserLogin'] = $this->getdatalogin();
-        $data['kat_berita'] = $this->kat_berita->get();
-        if (!isset($_GET['id'])) {
-            $this->writemsg("Data not found !!", 2);
-            redirect("Admin/berita");
-            return;
-        }
-
-        $id = $_GET['id'];
-        $data['id'] = $id;
-        $berita = $this->berita->get_one("id_berita = '$id'");
-        $data['berita'] = $berita;
-        $this->load->view("admin/header", $data);
-        $this->load->view("admin/beritaedit", $data);
-        $this->load->view("admin/footer", $data);
     }
 
     public function pengaduan()
@@ -368,7 +367,7 @@ class Admin extends CI_Controller
         $data['sda'] = $sda;
         $data['Satuan'] = $this->satuan->get();
         $this->load->view('admin/header', $data);
-        $this->load->view('admin/editsda', $data);
+        $this->load->view('admin/sdaedit', $data);
         $this->load->view('admin/footer', $data);
     }
 
@@ -392,5 +391,89 @@ class Admin extends CI_Controller
         $sda->write();
         $this->writemsg("Edit Success", 1);
         redirect("Admin/editsda?id=$id");
+    }
+
+    public function sdm()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->admin->get_one("id_user = '" . $_SESSION['user'] . "'");
+        $data['sdm'] = $this->sdm->get("", "", "id_sdm DESC");
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sdm", $data);
+        $this->load->view("admin/footer", $data);
+    }
+
+    public function addsdm()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        $data['Satuan'] = $this->satuan->get();
+        $data['KatSDM'] = $this->kat_sdm->get();
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sdmform", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doaddsdm()
+    {
+        $this->ceklogin();
+        $newsdm = new sdm_m();
+        $newsdm->update($_POST);
+        $newsdm->write();
+        $this->writemsg("Process Success", 1);
+        redirect("Admin/sdm");
+    }
+    public function deletesdm()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sdm");
+            return;
+        }
+        $id = $_GET['id'];
+        $sdm = $this->sdm->get_one("id_sdm ='$id'");
+        $sdm->delete();
+        $this->writemsg("Delete Success", 1);
+        redirect("Admin/sdm");
+    }
+    public function editsdm()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sdm");
+            return;
+        }
+        $id = $_GET['id'];
+        $sdm = $this->sdm->get_one("id_sdm = '$id'");
+        $data['sdm'] = $sdm;
+        $data['Satuan'] = $this->satuan->get();
+        $data['KatSDM'] = $this->kat_sdm->get();
+        $this->load->view("admin/header", $data);
+        $this->load->view("admin/sdmedit", $data);
+        $this->load->view("admin/footer", $data);
+    }
+    public function doeditsdm()
+    {
+        $this->ceklogin();
+        $data['UserLogin'] = $this->getdatalogin();
+        if (!isset($_GET['id'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sdm");
+            return;
+        }
+        $id = $_GET['id'];
+        $sdm = $this->sdm->get_one("id_sdm = '$id'");
+        if (!$sdm) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Admin/sdm");
+            return;
+        }
+        $sdm->update($_POST);
+        $sdm->write();
+        $this->writemsg("Edit Success", 1);
+        redirect("Admin/editsdm?id=$id");
     }
 }

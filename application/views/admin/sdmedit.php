@@ -3,12 +3,12 @@
     <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-5">
-                <h4 class="page-title">SDA</h4>
+                <h4 class="page-title">SDM</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url() ?>Admin/">Admin</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">SDA</li>
+                            <li class="breadcrumb-item active" aria-current="page">SDM</li>
                         </ol>
                     </nav>
                 </div>
@@ -27,27 +27,37 @@
                         <!-- title -->
                         <div class="d-md-flex align-items-center">
                             <div>
-                                <h4 class="card-title">Tambah Data SDA</h4>
-                                <h5 class="card-subtitle">Tambah Data SDA Terbaru Desa Petak</h5>
+                                <h4 class="card-title">Tambah Data SDM</h4>
+                                <h5 class="card-subtitle">Tambah Data SDM Terbaru Desa Petak</h5>
                             </div>
                         </div>
                         <!-- title -->
-                        <form action="<?= base_url() . "Admin/doeditsda?id=" . $sda->id_sda ?>" method="POST">
+                        <form action="<?= base_url() . "Admin/doeditsdm?id=" . $sdm->id_sdm ?>" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <labe>Uraian SDA</labe>
-                                    <input placeholder="Uraian" value="<?= $sda->uraian_sda ?>" type="text" name="uraian_sda" class="form-control" required>
+                                    <label>Uraian SDM</label>
+                                    <input placeholder="Uraian" value="<?= $sdm->uraian_sdm ?>" type="text" name="uraian_sdm" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <labe>Volume</labe>
-                                    <input placeholder="Volume" value="<?= $sda->volume ?>" type="text" min="0" name="volume" class="form-control" required>
+                                    <label>Volume</label>
+                                    <input placeholder="Volume" value="<?= $sdm->volume ?>" type="text" min="0" name="volume" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <labe>Satuan</labe>
+                                    <label>Satuan</label>
                                     <select name="satuan_id" class="form-control" required>
                                         <?php foreach ($Satuan as $s) { ?>
-                                            <option value="<?= $s->id_satuan ?>" <?= $s->id_satuan == $sda->satuan_id ? "selected" : "" ?> value="<?= $s->id_satuan ?>">
+                                            <option value="<?= $s->id_satuan ?>" <?= $s->id_satuan == $sdm->satuan_id ? "selected" : "" ?>>
                                                 <?= $s->jenis_satuan ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kategori SDM</label>
+                                    <select name="kat_sdm_id" class="form-control" required>
+                                        <?php foreach ($KatSDM as $k) { ?>
+                                            <option value="<?= $k->id_kat_sdm ?>" <?= $k->id_kat_sdm == $sdm->kat_sdm_id ? "selected" : "" ?>>
+                                                <?= $k->kat_sdm ?>
                                             </option>
                                         <?php } ?>
                                     </select>
