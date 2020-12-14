@@ -115,6 +115,10 @@ class berita_m extends CI_Model
     {
         return substr($this->content_berita, 0, 150) . "...";
     }
+    public function getShortestContent()
+    {
+        return substr($this->content_berita, 0, 50) . "...";
+    }
 
     public function getImage()
     {

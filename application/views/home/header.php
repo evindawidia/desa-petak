@@ -84,12 +84,12 @@
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html"><i class="fa fa-home"></i></a>
+									<li><a href="<?= base_url() ?>Home/"><i class="fa fa-home"></i></a>
 									</li>
 									<li class="dropdown"> <a href="#">Profil Desa <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
-											<li><a href="#"><i class="fa fa-adjust"></i> Sejarah Desa</a></li>
-											<li><a href="#"><i class="fa fa-adjust"></i> Gambaran Umum Desa</a></li>
+											<li><a href="<?= base_url() ?>Home/sejarah"><i class="fa fa-adjust"></i> Sejarah Desa</a></li>
+											<li><a href="<?= base_url() ?>Home/gambaranumum"><i class="fa fa-adjust"></i> Gambaran Umum Desa</a></li>
 											<li><a href="#"><i class="fa fa-adjust"></i> Batas Desa</a></li>
 										</ul>
 									</li>

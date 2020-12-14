@@ -24,16 +24,27 @@ class Home extends CI_Controller
     {
         $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "3");
         $data['KatBerita'] = $this->kat_berita->get();
-        $this->load->helper('url');
         $this->load->view('home/header', $data);
         $this->load->view('home/index', $data);
         $this->load->view('home/footer', $data);
     }
     public function dummy()
     {
-        $this->load->helper('url');
         $this->load->view('home/header');
         $this->load->view('home/page');
+        $this->load->view('home/footer');
+    }
+    public function sejarah()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/sejarah', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function gambaranumum()
+    {
+        $this->load->view('home/header');
+        $this->load->view('home/gamum');
         $this->load->view('home/footer');
     }
 }
