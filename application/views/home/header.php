@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
-	<link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/images/favicon.png">
-	<title>themelock.com - POLO | The Multi-Purpose HTML5 Template</title>
+	<link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/images/logokab.png">
+	<title>Desa Petak - Mojokerto</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="<?php echo base_url(); ?>public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
 	</style>
 </head>
 
-<body class="wide" data-animation-icon="<?= base_url() ?>public/assets/images/svg-loaders/spin.svg">
+<body class="wide no-page-loader">
 
 
 	<!-- WRAPPER -->

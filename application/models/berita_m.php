@@ -124,4 +124,16 @@ class berita_m extends CI_Model
             return $this->defaultimg;
         }
     }
+    public function KatBerita()
+    {
+        return $this->kat_berita->get_one("id_kat_berita = '" . $this->kat_berita_id . "'");
+    }
+    public function getKatBerita()
+    {
+        return $this->KatBerita()->kat_berita;
+    }
+    public function getComment()
+    {
+        return $this->comment->get("berita_id = '" . $this->id_berita . "'");
+    }
 }

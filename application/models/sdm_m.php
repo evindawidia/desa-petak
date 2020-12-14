@@ -106,7 +106,7 @@ class sdm_m extends CI_Model
     }
     public function getKatSdm()
     {
-        return $this->kat_sdm_m->get_one("id_kat_sdm = '" . $this->kat_sdm_id . "'");
+        return $this->kat_sdm->get_one("id_kat_sdm = '" . $this->kat_sdm_id . "'");
     }
     public function getSatuanVolume()
     {

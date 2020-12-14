@@ -7,7 +7,7 @@
 				<div class="d-flex align-items-center">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="<?= base_url()?>Admin/">Admin</a></li>
+							<li class="breadcrumb-item"><a href="<?= base_url() ?>Admin/">Admin</a></li>
 							<li class="breadcrumb-item active" aria-current="page">Berita</li>
 						</ol>
 					</nav>
@@ -30,47 +30,47 @@
 								<h5 class="card-subtitle">Berita Desa Terbaru Desa Petak</h5>
 							</div>
 						</div>
-                        <!-- title -->
-                        <div class="ml-auto">
-                            <hr>
-                            <a href="<?= base_url()?>Admin/addberita" class="btn btn-success"><i class="fa fa-plus"></i> Berita</a>
-                        </div>
+						<!-- title -->
+						<div class="ml-auto">
+							<hr>
+							<a href="<?= base_url() ?>Admin/addberita" class="btn btn-success"><i class="fa fa-plus"></i> Berita</a>
+						</div>
 					</div>
-                    <?= $this->session->flashdata('msg') ?>
+					<?= $this->session->flashdata('msg') ?>
 					<div class="table-responsive p-3">
-                        <table class="table table-striped table-bordered datatable">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Tanggal Posting</th>
-                                    <th>Judul</th>
-                                    <th>Content Preview</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                foreach ($Berita as $b){?>
-                                <tr>
-                                    <td>
-										<img src="<?= $b->getImage() ?>" class="img-fluid" style="width:100px">
-									</td>
-                                    <td><?= $b->date_created ?></td>
-                                    <td><?= $b->judul_berita ?></td>
-                                    <td><?= $b->getShortContent() ?></td>
-                                    <td class="d-flex">
-                                        <a href="<?= base_url("Admin/editberita?id=".$b->id_berita)?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
-                                        <a href="<?= base_url("Admin/deleteberita?id=".$b->id_berita)?>" class="btn btn-danger delete"><i class="fa fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                        </table>
+						<table class="table table-striped table-bordered datatable">
+							<thead>
+								<tr>
+									<th>Image</th>
+									<th>Tanggal Posting</th>
+									<th>Judul</th>
+									<th>Content Preview</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								foreach ($Berita as $b) { ?>
+									<tr>
+										<td>
+											<img src="<?= $b->getImage() ?>" class="img-fluid" style="width:100px">
+										</td>
+										<td><?= $b->date_created ?></td>
+										<td><?= $b->judul_berita ?></td>
+										<td><?= $b->getShortContent() ?></td>
+										<td class="d-flex">
+											<a href="<?= base_url("Admin/editberita?id=" . $b->id_berita) ?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+											<a href="<?= base_url("Admin/deleteberita?id=" . $b->id_berita) ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i> Delete</a>
+										</td>
+									</tr>
+								<?php } ?>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<footer class="footer text-center">
-        <a>Copyright &copy Desa Mojoroto <?= date("Y")?> Created by Evinda Widia Cahyaningrum</a>
+		<a>Copyright &copy Desa Mojoroto <?= date("Y") ?> Created by Evinda Widia Cahyaningrum</a>
 	</footer>
 </div>

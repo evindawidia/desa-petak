@@ -74,14 +74,7 @@
 
 <body>
 	<!-- ============================================================== -->
-	<!-- Preloader - style you can find in spinners.css -->
-	<!-- ============================================================== -->
-	<div class="preloader">
-		<div class="lds-ripple">
-			<div class="lds-pos"></div>
-			<div class="lds-pos"></div>
-		</div>
-	</div>
+
 	<!-- ============================================================== -->
 	<!-- Main wrapper - style you can find in pages.scss -->
 	<!-- ============================================================== -->
@@ -91,7 +84,7 @@
 		<!-- ============================================================== -->
 		<header class="topbar" data-navbarbg="skin5">
 			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
-				<div class="navbar-header" data-logobg="skin5">
+				<div class="navbar-header" data-logobg="skin5" style="background: #FFC300">
 					<!-- ============================================================== -->
 					<!-- Logo -->
 					<!-- ============================================================== -->
@@ -100,17 +93,14 @@
 						<b class="logo-icon">
 							<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon -->
-							<img src="<?= base_url() ?>public/admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+							<img style="width: 40px" src="<?= base_url() ?>public/admin/assets/images/logokab.png" alt="homepage" class="dark-logo" />
 							<!-- Light Logo icon -->
-							<img src="<?= base_url() ?>public/admin/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+							<img style="width: 40px" src="<?= base_url() ?>public/admin/assets/images/logokab.png" alt="homepage" class="light-logo" />
 						</b>
 						<!--End Logo icon -->
 						<!-- Logo text -->
-						<span class="logo-text">
-							<!-- dark Logo text -->
-							<img src="<?= base_url() ?>public/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-							<!-- Light Logo text -->
-							<img src="<?= base_url() ?>public/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+						<span class="logo-text ml-2">
+							Desa Petak
 						</span>
 					</a>
 					<!-- ============================================================== -->

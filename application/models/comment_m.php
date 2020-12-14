@@ -71,23 +71,25 @@ class comment_m extends CI_Model
         }
         return $result;
     }
-    public function update($data){
-        $this->id_comment =isset($data['id_comment']) ?$data['id_comment'] : $this->id_comment;
-        $this->comment = isset($data['comment']) ?$data['comment'] : $this->comment;
-        $this->sender_name = isset($data['sender_name']) ?$data['sender_name'] : $this->sender_name;
-        $this->address = isset($data['address']) ?$data['address'] : $this->address;
+    public function update($data)
+    {
+        $this->id_comment = isset($data['id_comment']) ? $data['id_comment'] : $this->id_comment;
+        $this->comment = isset($data['comment']) ? $data['comment'] : $this->comment;
+        $this->sender_name = isset($data['sender_name']) ? $data['sender_name'] : $this->sender_name;
+        $this->address = isset($data['address']) ? $data['address'] : $this->address;
         $this->date_created = date("Y-m-d");
-        $this->berita_id = isset($data['id_berita']) ?$data['id_berita'] : $this->id_berita;
+        $this->berita_id = isset($data['id_berita']) ? $data['id_berita'] : $this->id_berita;
     }
 
-    public function write(){
+    public function write()
+    {
         $array = json_decode(json_encode($this), true);
         if ($this->id_comment == "") {
             $this->db->insert($this->table, $array);
             $id = $this->db->insert_id();
             $this->id_comment = $id;
             return $id;
-        }else{
+        } else {
             $this->db->where('id_comment', $this->id_comment);
             $this->db->update($this->table, $array);
             return $this->id_comment;
@@ -95,12 +97,13 @@ class comment_m extends CI_Model
         return $id;
     }
 
-    public function delete(){
-        $this->db->delete('comment', array('id_comment' => $this->id_comment)); 
+    public function delete()
+    {
+        $this->db->delete('comment', array('id_comment' => $this->id_comment));
         return true;
     }
     public function getBerita()
     {
-        return $this->berita->get_one("id_berita = '".$this->berita_id."'")
+        return $this->berita->get_one("id_berita = '" . $this->berita_id . "'");
     }
 }

@@ -9,11 +9,8 @@
 				<div class="text-middle">
 					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
 						<div class="text-center slider-content">
-							<h2 class="text-large m-b-0">BE POLO, BE SUCCESS</h2>
-							<h2 class="text-medium">INTERNATIONAL COMPANY</h2>
-
-							<a class="button border rounded" href="#">Explore more</a>
-							<a class="button border rounded" href="http://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923">Purchase</a>
+							<h2 class="text-large m-b-0">Selamat Datang</h2>
+							<h2 class="text-medium">di Website Resmi Desa Petak</h2>
 						</div>
 					</div>
 				</div>
@@ -25,8 +22,8 @@
 				<div class="text-middle">
 					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
 						<div class="slider-content">
-							<h2 class="text-large m-b-0">POLO<br /> CORPORATE</h2>
-							<h2 class="text-medium">INTERNATIONAL COMPANY</h2>
+							<h2 class="text-large m-b-0">Profil<br /> Wilayah</h2>
+							<h2 class="text-medium">Desa Petak</h2>
 						</div>
 					</div>
 				</div>
@@ -141,145 +138,45 @@
 				<!-- Blog post-->
 				<div class="post-content post-block post-light-background post-3-columns">
 					<!-- Blog image post-->
-					<div class="post-item" data-animation="fadeInUp" data-animation-delay="0">
-						<div class="post-image">
-							<a href="#">
-								<img alt="" src="<?= base_url()?>/public/assets/images/mockup/1.jpg">
-							</a>
-						</div>
-						<div class="post-content-details">
-							<div class="post-title">
-								<h3><a href="#">Image post example</a></h3>
+					<?php
+					foreach ($Berita as $b) { ?>
+						<div class="post-item" data-animation="fadeInUp" data-animation-delay="0">
+							<div class="post-image">
+								<a href="#">
+									<img alt="" src="<?= $b->getImage() ?>">
+								</a>
 							</div>
-							<div class="post-info">
-								<span class="post-autor">Post by: <a href="#">Alea Grande</a></span>
-								<span class="post-category">in <a href="#">Productivity</a></span>
-							</div>
-							<div class="post-description">
-								<p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet. Ut nec metus a mi ullamcorper hendrerit.</p>
-
+							<div class="post-content-details">
+								<div class="post-title">
+									<h3><a href="#"><?= $b->judul_berita ?></a></h3>
+								</div>
 								<div class="post-info">
-									<a class="read-more" href="blog-post.html">read more <i class="fa fa-long-arrow-right"></i></a>
+									<span class="post-autor">Post by: Pemerintahan Desa Petak</span>
+									<span class="post-category">in <?= $b->getKatBerita() ?></span>
+								</div>
+								<div class="post-description">
+									<p><?= $b->getShortContent() ?></p>
+
+									<div class="post-info">
+										<a class="read-more" href="blog-post.html">read more <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+
+							<div class="post-meta">
+								<div class="post-date">
+									<span class="post-date-day"><?php echo date("d F Y", strtotime($b->date_created)) ?></span>
+								</div>
+
+								<div class="post-comments">
+									<a href="#">
+										<i class="fa fa-comments-o"></i>
+										<span class="post-comments-number"><?php echo count($b->getComment()); ?></span>
+									</a>
 								</div>
 							</div>
 						</div>
-
-						<div class="post-meta">
-							<div class="post-date">
-								<span class="post-date-day">19</span>
-								<span class="post-date-month">January</span>
-								<span class="post-date-year">2015</span>
-							</div>
-
-							<div class="post-comments">
-								<a href="#">
-									<i class="fa fa-comments-o"></i>
-									<span class="post-comments-number">324</span>
-								</a>
-							</div>
-							<div class="post-comments">
-								<a href="#">
-									<i class="fa fa-share-alt"></i>
-									<span class="post-comments-number">324</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<!-- Blog slider post-->
-					<div class="post-item" data-animation="fadeInUp" data-animation-delay="200">
-
-						<div class="post-image">
-							<a href="#">
-								<img alt="" src="<?= base_url()?>/public/assets/images/mockup/2.jpg">
-							</a>
-						</div>
-
-						<div class="post-content-details">
-							<div class="post-title">
-								<h3><a href="#">Slider post demo</a></h3>
-							</div>
-							<div class="post-info">
-								<span class="post-autor">Post by: <a href="#">Alea Grande</a></span>
-								<span class="post-category">in <a href="#">Productivity</a></span>
-							</div>
-							<div class="post-description">
-								<p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet. Ut nec metus a mi ullamcorper hendrerit.
-
-								</p>
-
-								<div class="post-info">
-									<a class="read-more" href="blog-post.html">read more <i class="fa fa-long-arrow-right"></i></a>
-								</div>
-							</div>
-						</div>
-						<div class="post-meta">
-							<div class="post-date">
-								<span class="post-date-day">16</span>
-								<span class="post-date-month">January</span>
-								<span class="post-date-year">2015</span>
-							</div>
-
-							<div class="post-comments">
-								<a href="#">
-									<i class="fa fa-comments-o"></i>
-									<span class="post-comments-number">324</span>
-								</a>
-							</div>
-							<div class="post-comments">
-								<a href="#">
-									<i class="fa fa-share-alt"></i>
-									<span class="post-comments-number">324</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<!-- Blog image post-->
-					<div class="post-item" data-animation="fadeInUp" data-animation-delay="400">
-						<div class="post-image">
-							<a href="#">
-								<img alt="" src="<?= base_url()?>/public/assets/images/mockup/3.jpg">
-							</a>
-						</div>
-						<div class="post-content-details">
-							<div class="post-title">
-								<h3><a href="#">Image post example</a></h3>
-							</div>
-							<div class="post-info">
-								<span class="post-autor">Post by: <a href="#">Alea Grande</a></span>
-								<span class="post-category">in <a href="#">Productivity</a></span>
-							</div>
-							<div class="post-description">
-								<p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet. Ut nec metus a mi ullamcorper hendrerit.
-
-								</p>
-
-								<div class="post-info">
-									<a class="read-more" href="blog-post.html">read more <i class="fa fa-long-arrow-right"></i></a>
-								</div>
-							</div>
-						</div>
-
-						<div class="post-meta">
-							<div class="post-date">
-								<span class="post-date-day">14</span>
-								<span class="post-date-month">February</span>
-								<span class="post-date-year">2015</span>
-							</div>
-
-							<div class="post-comments">
-								<a href="#">
-									<i class="fa fa-comments-o"></i>
-									<span class="post-comments-number">324</span>
-								</a>
-							</div>
-							<div class="post-comments">
-								<a href="#">
-									<i class="fa fa-share-alt"></i>
-									<span class="post-comments-number">324</span>
-								</a>
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<!-- END: Blog post-->
 			</div>
