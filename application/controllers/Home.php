@@ -43,8 +43,23 @@ class Home extends CI_Controller
     }
     public function gambaranumum()
     {
-        $this->load->view('home/header');
-        $this->load->view('home/gamum');
-        $this->load->view('home/footer');
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/gamum', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function visimisi()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/visimisi', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function pemerintah()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/pemerintah', $data);
+        $this->load->view('home/footer', $data);
     }
 }

@@ -90,13 +90,12 @@
 										<ul class="dropdown-menu">
 											<li><a href="<?= base_url() ?>Home/sejarah"><i class="fa fa-adjust"></i> Sejarah Desa</a></li>
 											<li><a href="<?= base_url() ?>Home/gambaranumum"><i class="fa fa-adjust"></i> Gambaran Umum Desa</a></li>
-											<li><a href="#"><i class="fa fa-adjust"></i> Batas Desa</a></li>
 										</ul>
 									</li>
 									<li class="dropdown"> <a href="#">Pemerintahan Desa <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
-											<li><a href="#"><i class="fa fa-check-circle"></i> Visi Dan Misi</a></li>
-											<li><a href="#"><i class="fa fa-check-circle"></i> Pemerintah Desa</a></li>
+											<li><a href="<?= base_url() ?>Home/visimisi"><i class="fa fa-check-circle"></i> Visi Dan Misi</a></li>
+											<li><a href="<?= base_url() ?>Home/pemerintah"><i class="fa fa-check-circle"></i> Pemerintah Desa</a></li>
 											<li><a href="#"><i class="fa fa-check-circle"></i> Badan Permusyawaratan Desa</a></li>
 										</ul>
 									</li>
