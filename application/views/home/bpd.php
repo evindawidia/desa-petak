@@ -25,16 +25,18 @@
                             </blockquote>
                             <p>Badan Permusyawaratan Desa yang selanjutnya disingkat BPD atau yang disebut dengan nama lain adalah lembaga yang melaksanakan fungsi pemerintahan yang anggotanya merupakan wakil dari penduduk Desa berdasarkan keterwakilan wilayah dan ditetapkan secara demokratis.</p>
                             <p>Dalam Permendagri No.110/2016 Badan Permusyawaratan Desa mempunyai fungsi, membahas dan menyepakati Rancangan Peraturan Desa bersama Kepala Desa, menampung dan menyalurkan aspirasi masyarakat desa, dan melakukan pengawasan kinerja kepala desa.</p>
-                            <p>Selain melaksanakan fungsi diatas, Badan Permusyawaratan Desa juga mempunyai tugas sebagai berikut.<br>BPD mempunyai fungsi :</p>
+                            <p>Selain melaksanakan fungsi diatas, Badan Permusyawaratan Desa juga mempunyai tugas sebagai berikut.</p>
+                            <h5>FUNGSI BPD :</h5>
                             <ol>
                                 <li>Membahas dan menyepakati Rancangan Peraturan Desa Bersama Kepala Desa</li>
                                 <li>Menampung dan menyalurkan aspirasi masyarakat Desa</li>
                                 <li>Melakukan pengawasan kinerja Kepala Desa</li>
                             </ol>
-                            <p>BPD mempunyai tugas :</p>
+                            <br>
+                            <h5>TUGAS BPD :</h5>
                             <ol>
                                 <li>Menggali aspirasi masyarakat</li>
-                                <li>Menampung aspirasi masyarakt</li>
+                                <li>Menampung aspirasi masyarakat</li>
                                 <li>Mengelola aspirasi masyarakat</li>
                                 <li>Menyalurkan aspirasi masyarakat</li>
                                 <li>Menyelenggarakan musyawarah BPD</li>
