@@ -62,4 +62,18 @@ class Home extends CI_Controller
         $this->load->view('home/pemerintah', $data);
         $this->load->view('home/footer', $data);
     }
+    public function bpd()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/bpd', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function lpm()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/lpm', $data);
+        $this->load->view('home/footer', $data);
+    }
 }

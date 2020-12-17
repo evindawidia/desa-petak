@@ -7,7 +7,7 @@
                 <!-- Post item-->
                 <div class="post-item">
                     <div class="post-image">
-                        <a href="#">
+                        <a>
                             <img alt="" src="<?php echo base_url(); ?>public/assets/images/cobasejarah.jpg">
                         </a>
                     </div>
@@ -19,6 +19,9 @@
                             <span class="post-autor">Post by: Pemerintahan Desa Petak</span>
                         </div>
                         <div class="post-description">
+                            <a>
+                                <img alt="" src="<?php echo base_url(); ?>public/assets/images/mindmap.jpg">
+                            </a>
                             <p>Kepala Desa bertugas menyelenggarakan Pemerintahan Desa, melaksanakan pembangunan, pembinaan kemasyarakatan, dan pemberdayaan masyarakat. Untuk melaksanakan tugas Kepala Desa memiliki fungsi-fungsi sebagai berikut :</p>
                             <ol>
                                 <li>Menyelenggarakan Pemerintahan Desa, seperti tata praja Pemerintahan, penetapan peraturan di desa, pembinaan masalah pertanahan, pembinaan ketentraman dan ketertiban, melakukan upaya perlindungan masyarakat, administrasi kependudukan, dan penataan dan pengelolaan wilayah.</li>
