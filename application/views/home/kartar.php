@@ -21,6 +21,7 @@
                         <div class="post-description">
                             <h5>TUGAS KARANG TARUNA :</h5>
                             <p>menanggulangi berbagai masalah kesejahteraan sosial terutama yang dihadapi generasi muda, baik yang bersifat preventif, rehabilitatif, maupun pengembangan potensi generasi muda di lingkungannya</p>
+                            <br>
                             <h5>FUNGSI KARANGTARUNA : </h5>
                             <ol>
                                 <li>Penyelenggara usaha kesejahteraan sosial</li>

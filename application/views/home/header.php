@@ -103,7 +103,7 @@
 										<ul class="dropdown-menu">
 											<li><a href="<?= base_url() ?>Home/lpm"><i class="fa fa-users"></i> LPM</a></li>
 											<li><a href="<?= base_url() ?>Home/kartar"><i class="fa fa-users"></i> Karang Taruna</a></li>
-											<li><a href="#"><i class="fa fa-users"></i> PKK</a></li>
+											<li><a href="<?= base_url() ?>Home/pkk"><i class="fa fa-users"></i> PKK</a></li>
 										</ul>
 									</li>
 									<li class="dropdown"> <a href="#">Data Desa <i class="fa fa-angle-down"></i> </a>
