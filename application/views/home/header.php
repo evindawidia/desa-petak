@@ -120,7 +120,7 @@
 											<li><a href="<?= base_url() ?>Home/sosbud"><i class="fa fa-database"></i> Sosial Budaya</a></li>
 										</ul>
 									</li>
-									<li><a href="#">Pengaduan Masyarakat<i class="fa fa-megaphone"></i></a>
+									<li><a href="<?= base_url() ?>Home/pengaduan">Pengaduan Masyarakat<i class="fa fa-megaphone"></i></a>
 									<li class="dropdown"> <a href="#">Covid 19 <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
 											<li><a href="#"><i class="fa fa-ambulance"></i> Covid 19</a></li>
