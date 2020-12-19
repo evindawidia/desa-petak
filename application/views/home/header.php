@@ -114,10 +114,10 @@
 									<li class="dropdown"> <a href="#">Data Desa <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
 											<li><a href="<?= base_url() ?>Home/sda"><i class="fa fa-database"></i> SDA</a></li>
-											<li><a href="#"><i class="fa fa-database"></i> SDM</a></li>
-											<li><a href="#"><i class="fa fa-database"></i> Organisasi</a></li>
-											<li><a href="#"><i class="fa fa-database"></i> Sarana</a></li>
-											<li><a href="#"><i class="fa fa-database"></i> Sosial Budaya</a></li>
+											<li><a href="<?= base_url() ?>Home/sdm"><i class="fa fa-database"></i> SDM</a></li>
+											<li><a href="<?= base_url() ?>Home/organisasi"><i class="fa fa-database"></i> Organisasi</a></li>
+											<li><a href="<?= base_url() ?>Home/sarana"><i class="fa fa-database"></i> Sarana</a></li>
+											<li><a href="<?= base_url() ?>Home/sosbud"><i class="fa fa-database"></i> Sosial Budaya</a></li>
 										</ul>
 									</li>
 									<li><a href="#">Pengaduan Masyarakat<i class="fa fa-megaphone"></i></a>

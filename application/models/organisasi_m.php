@@ -105,4 +105,8 @@ class organisasi_m extends CI_Model
     {
         return $this->volume . " " . $this->getSatuan()->jenis_satuan;
     }
+    public function getRandomColor()
+    {
+        return "rgba(" . rand(100, 255) . "," . rand(100, 255) . "," . rand(100, 255) . ", 0.5)";
+    }
 }

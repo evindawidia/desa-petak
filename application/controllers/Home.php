@@ -157,4 +157,28 @@ class Home extends CI_Controller
         $this->load->view('home/sdm', $data);
         $this->load->view('home/footer', $data);
     }
+    public function organisasi()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $data['organisasi'] = $this->organisasi->get();
+        $this->load->view('home/header', $data);
+        $this->load->view('home/organisasi', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function sarana()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $data['sarana'] = $this->sarana->get();
+        $this->load->view('home/header', $data);
+        $this->load->view('home/sarana', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function sosbud()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $data['sosbud'] = $this->sosbud->get();
+        $this->load->view('home/header', $data);
+        $this->load->view('home/sosbud', $data);
+        $this->load->view('home/footer', $data);
+    }
 }

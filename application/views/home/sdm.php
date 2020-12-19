@@ -8,17 +8,17 @@
                 <div class="post-item">
                     <div class="post-content-details">
                         <div class="post-title">
-                            <h2>Sumber Daya Alam Desa Petak</h2>
+                            <h2>Sumber Daya Manusia Desa Petak</h2>
                         </div>
                         <div class="post-info">
                             <span class="post-autor">Post by: Pemerintahan Desa Petak</span>
                         </div>
                         <div class="post-description">
-                            <canvas id="myChart" style="width: 100%; height: 300px"></canvas>
+                            <canvas id="myChart" style="width: 100%; height: 450px"></canvas>
                         </div>
                         <div class="post-description">
                             <br>
-                            <h3>DATA SDA</h3>
+                            <h3>DATA SDM</h3>
                             <div class="table-responsive p-3">
                                 <table class="table table-striped table-bordered datatable">
                                     <thead>
@@ -29,9 +29,9 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($sda as $s) { ?>
+                                        foreach ($sdm as $s) { ?>
                                             <tr>
-                                                <td><?= $s->uraian_sda ?></td>
+                                                <td><?= $s->uraian_sdm ?></td>
                                                 <td><?= $s->getSatuanVolume() ?></td>
                                             </tr>
                                         <?php } ?>
@@ -73,13 +73,13 @@
         type: 'horizontalBar',
         data: {
             labels: [
-                <?php foreach ($sda as $s) { ?> "<?= $s->uraian_sda . " / " . $s->getSatuan()->jenis_satuan ?>", <?php } ?>
+                <?php foreach ($sdm as $s) { ?> "<?= $s->uraian_sdm . " / " . $s->getSatuan()->jenis_satuan ?>", <?php } ?>
             ],
             datasets: [{
-                label: 'Statistik SDA',
-                data: [<?php foreach ($sda as $s) { ?> "<?= $s->volume ?>", <?php } ?>],
+                label: 'Statistik sdm',
+                data: [<?php foreach ($sdm as $s) { ?> "<?= $s->volume ?>", <?php } ?>],
                 backgroundColor: [
-                    <?php foreach ($sda as $s) { ?> "<?= $s->getRandomColor() ?>", <?php } ?>
+                    <?php foreach ($sdm as $s) { ?> "<?= $s->getRandomColor() ?>", <?php } ?>
                 ],
             }]
         },
