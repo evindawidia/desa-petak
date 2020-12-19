@@ -138,6 +138,6 @@ class berita_m extends CI_Model
     }
     public function getComment()
     {
-        return $this->comment->get("berita_id = '" . $this->id_berita . "'");
+        return $this->comment->get("berita_id = '" . $this->id_berita . "'", "", "id_comment desc");
     }
 }

@@ -28,6 +28,9 @@
 	<!-- Responsive classes -->
 	<link href="<?php echo base_url(); ?>public/assets/css/responsive.css" rel="stylesheet">
 
+	<!-- Chart -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
@@ -45,6 +48,7 @@
 	<!--VENDOR SCRIPT-->
 	<script src="<?php echo base_url(); ?>public/assets/vendor/jquery/jquery-1.11.2.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/assets/vendor/plugins-compressed.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 	<style>
 		.header-transparent {
 			background: #fff !important;
@@ -109,7 +113,7 @@
 									</li>
 									<li class="dropdown"> <a href="#">Data Desa <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
-											<li><a href="#"><i class="fa fa-database"></i> SDA</a></li>
+											<li><a href="<?= base_url() ?>Home/sda"><i class="fa fa-database"></i> SDA</a></li>
 											<li><a href="#"><i class="fa fa-database"></i> SDM</a></li>
 											<li><a href="#"><i class="fa fa-database"></i> Organisasi</a></li>
 											<li><a href="#"><i class="fa fa-database"></i> Sarana</a></li>
