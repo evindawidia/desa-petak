@@ -42,7 +42,7 @@
                     <h4 class="widget-title">Berita Desa</h4>
                     <ul class="list-posts list-medium">
                         <?php foreach ($Berita as $b) { ?>
-                            <li><a href="#"><?= $b->judul_berita ?></a>
+                            <li><a href="<?= base_url() ?>Home/beritadetail?id=<?= $b->id_berita ?>"><?= $b->judul_berita ?></a>
                                 <small><?php echo date("d F Y", strtotime($b->date_created)) ?></small>
                                 <img alt="" src="<?= $b->getImage() ?>" class="img-fluid" style="width:100px">
                                 <p><?= $b->getShortContent() ?></p>

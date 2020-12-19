@@ -90,6 +90,7 @@
 										<ul class="dropdown-menu">
 											<li><a href="<?= base_url() ?>Home/sejarah"><i class="fa fa-adjust"></i> Sejarah Desa</a></li>
 											<li><a href="<?= base_url() ?>Home/gambaranumum"><i class="fa fa-adjust"></i> Gambaran Umum Desa</a></li>
+											<li><a href="<?= base_url() ?>Home/beritadesa"><i class="fa fa-adjust"></i> Berita Desa</a></li>
 										</ul>
 									</li>
 									<li class="dropdown"> <a href="#">Pemerintahan Desa <i class="fa fa-angle-down"></i> </a>
@@ -115,6 +116,7 @@
 											<li><a href="#"><i class="fa fa-database"></i> Sosial Budaya</a></li>
 										</ul>
 									</li>
+									<li><a href="#">Pengaduan Masyarakat<i class="fa fa-megaphone"></i></a>
 									<li class="dropdown"> <a href="#">Covid 19 <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
 											<li><a href="#"><i class="fa fa-ambulance"></i> Covid 19</a></li>

@@ -30,7 +30,8 @@
                         </div>
                         <div class="post-description">
                             <h3>MISI</h3>
-                            <ol><li>Misi Membangun Perencanaan yang Akuntabel.</li><br>
+                            <ol>
+                                <li>Misi Membangun Perencanaan yang Akuntabel.</li><br>
                                 Misi ini menjelaskan Penciptaan Fondasi Manajemen Pemerintahan yang Mantab melalui Pengembangan Data / Informasi Desa yang benar dan rinci Menuju Perencanaan Desa yang Detil dan Lengkap serta Berkualitas.<br>
                                 Misi ini disepakati karena terbukti kualitas manajemen pemerintahan tergantung dengan kualitas manajemen pembangunan. Aspek Pemerintahan adalah bagian yang tidak terpisahkan dari proses pembangunan dan sebaliknya aspek pembangunan adalah kewajiban yang harus dipenuhi dalam pemerintahan. Pembangunan adalah upaya pemerintah dan segenap masyarakat dalam melakukan perubahan keadaan dari keadaan sekarang menuju keadaan yang ideal dan lebih memenuhi hajat kehidupan orang banyak, dan lebih baik sesuai dengan perkembangan tingkat peradaban manusia.<br>
                                 Pemerintah yang tidak melakukan amanat pembangunan merupakan organisasi yang lalim.Sedangkan manajemen pembangunan menempatkan perencanaan sebagai tahapan profesional pemerintah yang harus dipenuhi.Tanpa perencanaan yang baik suatu pemerintahan menunjukkan dirinya tidak profesional.<br>
@@ -53,7 +54,7 @@
                     <h4 class="widget-title">Berita Desa</h4>
                     <ul class="list-posts list-medium">
                         <?php foreach ($Berita as $b) { ?>
-                            <li><a href="#"><?= $b->judul_berita ?></a>
+                            <li><a href="<?= base_url() ?>Home/beritadetail?id=<?= $b->id_berita ?>"><?= $b->judul_berita ?></a>
                                 <small><?php echo date("d F Y", strtotime($b->date_created)) ?></small>
                                 <img alt="" src="<?= $b->getImage() ?>" class="img-fluid" style="width:100px">
                                 <p><?= $b->getShortContent() ?></p>

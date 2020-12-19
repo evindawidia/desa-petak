@@ -20,6 +20,25 @@ class Home extends CI_Controller
         $this->load->model("sosbud_m", "sosbud");
         $this->load->model("comment_m", "comment");
     }
+    public function writemsg($msg, $status = 3)
+    {
+        // 1 = success;
+        // 2 = error;
+        // 3 = warning;
+        if ($status == 1) {
+            $stat = "alert-success";
+        }
+
+        if ($status == 2) {
+            $stat = "alert-danger";
+        }
+
+        if ($status == 3) {
+            $stat = "alert-warning";
+        }
+
+        $this->session->set_flashdata('msg', "<div class='alert $stat'>$msg</div>");
+    }
     public function index()
     {
         $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "3");
@@ -47,6 +66,38 @@ class Home extends CI_Controller
         $this->load->view('home/header', $data);
         $this->load->view('home/gamum', $data);
         $this->load->view('home/footer', $data);
+    }
+    public function beritadesa()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/beritadesa', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function beritadetail()
+    {
+        if (!isset($_GET['id'])) {
+            $this->writemsg("Data not found !!", 2);
+            redirect("Home/beritadesa");
+            return;
+        }
+        $id = $_GET['id'];
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc");
+        $data['berita'] = $this->berita->get_one("id_berita = '$id'");
+        $data['KatBerita'] = $this->kat_berita->get();
+        $data['Komen'] = $this->comment->get();
+        $this->load->view('home/header', $data);
+        $this->load->view('home/beritadetail', $data);
+        $this->load->view('home/footer', $data);
+    }
+    public function doaddcomment()
+    {
+        $newcomment = new comment_m();
+        $id = $_GET['id'];
+        $newcomment->update($_POST);
+        $newcomment->berita_id = $id;
+        $newcomment->write();
+        redirect("Home/beritadetail?id=$id");
     }
     public function visimisi()
     {

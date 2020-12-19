@@ -148,7 +148,7 @@
 							</div>
 							<div class="post-content-details">
 								<div class="post-title">
-									<h3><a href="#"><?= $b->judul_berita ?></a></h3>
+									<h3><a href="<?= base_url() ?>Home/beritadetail?id=<?= $b->id_berita ?>"><?= $b->judul_berita ?></a></h3>
 								</div>
 								<div class="post-info">
 									<span class="post-autor">Post by: Pemerintahan Desa Petak</span>
@@ -158,7 +158,7 @@
 									<p><?= $b->getShortContent() ?></p>
 
 									<div class="post-info">
-										<a class="read-more" href="blog-post.html">read more <i class="fa fa-long-arrow-right"></i></a>
+										<a class="read-more" href="<?= base_url() ?>Home/beritadetail?id=<?= $b->id_berita ?>">read more <i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -169,7 +169,7 @@
 								</div>
 
 								<div class="post-comments">
-									<a href="#">
+									<a href="<?= base_url() ?>Home/beritadetail?id=<?= $b->id_berita ?>">
 										<i class="fa fa-comments-o"></i>
 										<span class="post-comments-number"><?php echo count($b->getComment()); ?></span>
 									</a>
