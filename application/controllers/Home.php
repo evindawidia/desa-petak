@@ -184,7 +184,7 @@ class Home extends CI_Controller
     public function pengaduan()
     {
         $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
-        $data['']
+        $data['pengaduan'] = $this->pengaduan->get();
         $this->load->view('home/header', $data);
         $this->load->view('home/pengaduan', $data);
         $this->load->view('home/footer', $data);
@@ -196,5 +196,13 @@ class Home extends CI_Controller
         $newpengaduan->update($_POST);
         $newpengaduan->write();
         redirect("Home/pengaduan");
+    }
+
+    public function covid19()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/covid', $data);
+        $this->load->view('home/footer', $data);
     }
 }

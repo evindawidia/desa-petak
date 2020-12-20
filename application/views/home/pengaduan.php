@@ -21,7 +21,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="email" class="upper">NIK</label>
-                                        <input type="email" aria-required="true" id="nik" placeholder="Masukkan email" name="nik" class="form-control required">
+                                        <input type="number" aria-required="true" id="nik" placeholder="Masukkan email" name="nik" class="form-control required">
                                     </div>
                                 </div>
 
@@ -57,52 +57,49 @@
                     <div class="heading">
                         <h4 class="comments-title">Pengaduan <small class="number">(4)</small></h4>
                     </div>
-                    <div class="comment">
-                        <a href="#" class="pull-left">
-                            <img alt="" src="images/team/2.jpg" class="avatar">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Juna Smith</h4>
-                            <p class="time">Jan 18, 2015 at 10:30 PM</p>
-                            <p>Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
-                            <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-                        </div>
 
-
-
-                        <div class="comment comment-replied">
-                            <a href="#" class="pull-left">
-                                <img alt="" src="images/team/3.jpg" class="avatar">
-                            </a>
+                    <?php foreach ($pengaduan as $p) { ?>
+                        <div class="comment">
                             <div class="media-body">
-                                <h4 class="media-heading">Ariol Smith</h4>
-                                <p class="time">Jun 24, 2015 at 14:28 PM</p>
-                                <p>Ut ultrices consectetur eleifend. Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
+                                <h4 class="media-heading"><?= $p->sender_name ?></h4>
+                                <p class="time"><?= date("d F Y", strtotime($p->date_created)) ?></p>
+                                <p><?= $p->comment ?></p>
+                                <?php
+                                if (count($p->getBalasan())  != 0) { ?>
+                                    <a href="#" class="comment-reply pull-right see-comment" data-target=".balasan-<?= $p->id_pengaduan ?>"><i class='fa fa-eye'></i> Lihat Tanggapan</a>
+                                <?php } ?>
+                            </div>
+                            <div class="balasan-<?= $p->id_pengaduan ?> hide">
+                                <?php foreach ($p->getBalasan() as $balas) { ?>
+                                    <div class="comment comment-replied bg-light" style="margin-top: 10px">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Admin</h4>
+                                            <p class="time"><?= date("d F Y", strtotime($balas->date_created)) ?></p>
+                                            <p><?= $balas->comment ?></p>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
 
                 </div>
                 <!-- END: Comments-->
             </div>
             <!-- END: Blog post-->
 
-            <!-- Sidebar-->
             <div class="sidebar sidebar-modern col-md-3">
                 <!--widget blog articles-->
                 <div class="widget clearfix widget-blog-articles">
-                    <h4 class="widget-title">From our Blog</h4>
+                    <h4 class="widget-title">Berita Desa</h4>
                     <ul class="list-posts list-medium">
-                        <li><a href="#">Printing and typesetting</a>
-                            <small>Jun 18 2015</small>
-                        </li>
-                        <li><a href="#">Lorem Ipsum has been the industry's</a><small>Jun 18 2015</small>
-                        </li>
-                        <li><a href="#">Ipsum and typesetting</a><small>Jun 18 2015</small>
-                        </li>
-                        <li><a href="#">Specimen book</a><small>Jun 18 2015</small>
-                        </li>
-
+                        <?php foreach ($Berita as $b) { ?>
+                            <li><a href="<?= base_url() ?>Home/beritadetail?id=<?= $b->id_berita ?>"><?= $b->judul_berita ?></a>
+                                <small><?php echo date("d F Y", strtotime($b->date_created)) ?></small>
+                                <img alt="" src="<?= $b->getImage() ?>" class="img-fluid" style="width:100px">
+                                <p><?= $b->getShortContent() ?></p>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!--end: widget blog articles-->
@@ -113,3 +110,17 @@
     </div>
 </section>
 <!-- END: SECTION -->
+
+<script>
+    $(".see-comment").click(function(e) {
+        e.preventDefault()
+        var target = $(this).attr("data-target")
+        if ($(target).hasClass("hide")) {
+            $(target).removeClass("hide")
+            $(this).html("<i class='fa fa-times'></i> Tutup Tanggapan")
+        } else {
+            $(target).addClass("hide")
+            $(this).html("<i class='fa fa-eye'></i> Lihat Tanggapan")
+        }
+    })
+</script>
