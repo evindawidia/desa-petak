@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class organisasi_m extends CI_Model
+class Organisasi_m extends CI_Model
 {
     private $table = "organisasi";
 

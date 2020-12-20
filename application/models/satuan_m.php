@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class satuan_m extends CI_Model
+class Satuan_m extends CI_Model
 {
 
     private $table = "satuan";
@@ -33,7 +33,7 @@ class satuan_m extends CI_Model
         return $this;
     }
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $groupby="", $orderby="" ,$stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
@@ -61,20 +61,22 @@ class satuan_m extends CI_Model
         return $result;
     }
 
-    public function update($data){
-        $this->id_satuan = isset($data['id_satuan']) ?$data['id_satuan'] : $this->id_satuan;
-        $this->jenis_satuan = isset($data['jenis_satuan']) ?$data['jenis_satuan'] : $this->jenis_satuan;
+    public function update($data)
+    {
+        $this->id_satuan = isset($data['id_satuan']) ? $data['id_satuan'] : $this->id_satuan;
+        $this->jenis_satuan = isset($data['jenis_satuan']) ? $data['jenis_satuan'] : $this->jenis_satuan;
         $this->date_created = date("Y-m-d");
     }
 
-    public function write(){
+    public function write()
+    {
         $array = json_decode(json_encode($this), true);
         if ($this->id_satuan == "") {
             $this->db->insert($this->table, $array);
             $id = $this->db->insert_id();
             $this->id_satuan = $id;
             return $id;
-        }else{
+        } else {
             $this->db->where('id_satuan', $this->id_satuan);
             $this->db->update($this->table, $array);
             return $this->id_satuan;
@@ -82,8 +84,9 @@ class satuan_m extends CI_Model
         return $id;
     }
 
-    public function delete(){
-        $this->db->delete('satuan', array('id_satuan' => $this->id_satuan)); 
+    public function delete()
+    {
+        $this->db->delete('satuan', array('id_satuan' => $this->id_satuan));
         return true;
     }
 }

@@ -9,8 +9,9 @@
 				<div class="text-middle">
 					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
 						<div class="text-center slider-content">
-							<h2 class="text-large m-b-0">Selamat Datang</h2>
-							<h2 class="text-medium">di Website Resmi Desa Petak</h2>
+							<h2 class="text-large m-b-0">Selamat Datang di</h2>
+							<h2 class="text-medium">SISTEM INFORMASI DESA PETAK</h2>
+							<a class="button border rounded" href="#sectionhome">Explore more</a>
 						</div>
 					</div>
 				</div>
@@ -21,22 +22,23 @@
 			<div class="container-fullscreen">
 				<div class="text-middle">
 					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
-						<div class="slider-content">
-							<h2 class="text-large m-b-0">Profil<br /> Wilayah</h2>
-							<h2 class="text-medium">Desa Petak</h2>
+						<div class="text-center slider-content">
+							<h2 class="text-large m-b-0">INFORMASI</h2>
+							<h2 class="text-medium">Sejarah Desa Petak</h2>
+							<a class="button border rounded" href="<?= base_url() ?>Home/sejarah">Explore more</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div style="background-image:url('https://stptrisakti.ac.id/wp-content/uploads/2016/05/20160531-desaPetak.jpg');" class="owl-bg-img">
-
 			<div class="container-fullscreen">
 				<div class="text-middle">
 					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
-						<div class="slider-content">
-							<h2 class="text-large m-b-0">POLO<br /> CORPORATE</h2>
-							<h2 class="text-medium">INTERNATIONAL COMPANY</h2>
+						<div class="text-center slider-content">
+							<h2 class="text-large m-b-0">INFORMASI</h2>
+							<h2 class="text-medium">Gambaran Umum Desa Petak</h2>
+							<a class="button border rounded" href="<?= base_url() ?>Home/gambaranumum">Explore more</a>
 						</div>
 					</div>
 				</div>
@@ -47,7 +49,7 @@
 <!-- END: SLIDER -->
 
 <!-- SERVICES -->
-<section class="p-t-100">
+<section class="p-t-100" id="sectionhome">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
@@ -136,13 +138,13 @@
 		<div id="blog">
 			<div class="container">
 				<!-- Blog post-->
-				<div class="post-content post-block post-light-background post-3-columns">
+				<div class="post-content post-block post-light-background post-3-columns ">
 					<!-- Blog image post-->
 					<?php
 					foreach ($Berita as $b) { ?>
 						<div class="post-item" data-animation="fadeInUp" data-animation-delay="0">
-							<div class="post-image">
-								<a href="#">
+							<div class="post-image gallery">
+								<a href="<?= $b->getImage() ?>" data-src="<?= $b->getImage() ?>">
 									<img alt="" src="<?= $b->getImage() ?>">
 								</a>
 							</div>

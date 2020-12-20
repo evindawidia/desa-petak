@@ -54,6 +54,9 @@
 			background: #fff !important;
 		}
 	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" integrity="sha512-gk6oCFFexhboh5r/6fov3zqTCA2plJ+uIoUx941tQSFg6TNYahuvh1esZVV0kkK+i5Kl74jPmNJTTaHAovWIhw==" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" integrity="sha512-gDBgGPXSeC2hx1W3S1CfSHbAValtLI8OArTGf0UVX7Fwb9Ak7HUE3LK9UEZxKGYVrIe0CJUVZDk9B2dIPwJ6VQ==" crossorigin="anonymous"></script>
+
 </head>
 
 <body class="wide no-page-loader">
@@ -69,8 +72,8 @@
 
 					<!--LOGO-->
 					<div id="logo">
-						<a href="index.html" class="logo" data-dark-logo="<?php echo base_url(); ?>public/assets/images/logopetak.png">
-							<img src="<?php echo base_url(); ?>public/assets/images/logopetak.png" alt="Polo Logo">
+						<a href="<?= base_url() ?>" class="logo" data-dark-logo="<?php echo base_url(); ?>public/assets/images/logokab.png">
+							<img src="<?php echo base_url(); ?>public/assets/images/logokab.png" alt="Polo Logo" style="padding : 10px">
 						</a>
 					</div>
 					<!--END: LOGO-->
@@ -123,10 +126,8 @@
 									<li><a href="<?= base_url() ?>Home/pengaduan">Pengaduan Masyarakat<i class="fa fa-megaphone"></i></a>
 									<li class="dropdown"> <a href="#">Covid 19 <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
-											<li><a href="#"><i class="fa fa-ambulance"></i> Covid 19</a></li>
-											<li><a href="#"><i class="fa fa-ambulance"></i> New Normal</a></li>
-											<li><a href="#"><i class="fa fa-ambulance"></i> Peta Sebaran</a></li>
-											<li><a href="#"><i class="fa fa-ambulance"></i> Data Statistik</a></li>
+											<li><a href="<?= base_url() ?>Home/covid19"><i class="fa fa-ambulance"></i> New Normal</a></li>
+											<li><a href="<?= base_url() ?>Home/covid19"><i class="fa fa-ambulance"></i> Peta Sebaran</a></li>
 										</ul>
 									</li>
 								</ul>

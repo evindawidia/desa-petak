@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class comment_m extends CI_Model
+class Comment_m extends CI_Model
 {
     private $table = "comment";
 

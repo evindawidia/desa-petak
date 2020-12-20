@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class admin_m extends CI_Model
+class Admin_m extends CI_Model
 {
     private $table = "admin";
     public $id_user = "";

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class balasan_m extends CI_Model
+class Balasan_m extends CI_Model
 {
     private $table = "balasan";
 
@@ -36,7 +36,7 @@ class balasan_m extends CI_Model
     }
     // funsi mendapat lebih dari satu baris
     // funsi mendapat lebih dari satu baris
-    public function get($where = "", $groupby="", $orderby="" ,$stringlimit = "")
+    public function get($where = "", $groupby = "", $orderby = "", $stringlimit = "")
     {
         // dibuat default value "" karena tidak semuanya butuh where atau limit 
         // maksud dari string limit untuk memberi batasan berapa sampai berapa baris
@@ -64,21 +64,23 @@ class balasan_m extends CI_Model
         return $result;
     }
 
-    public function update($data){
-        $this->id_balasan =isset($data['id_balasan']) ?$data['id_balasan'] : $this->id_balasan;
-        $this->comment = isset($data['comment']) ?$data['comment'] : $this->comment;
-        $this->pengaduan_id = isset($data['pengaduan_id']) ?$data['pengaduan_id'] : $this->pengaduan_id;
+    public function update($data)
+    {
+        $this->id_balasan = isset($data['id_balasan']) ? $data['id_balasan'] : $this->id_balasan;
+        $this->comment = isset($data['comment']) ? $data['comment'] : $this->comment;
+        $this->pengaduan_id = isset($data['pengaduan_id']) ? $data['pengaduan_id'] : $this->pengaduan_id;
         $this->date_created = date("Y-m-d");
     }
 
-    public function write(){
+    public function write()
+    {
         $array = json_decode(json_encode($this), true);
         if ($this->id_balasan == "") {
             $this->db->insert($this->table, $array);
             $id = $this->db->insert_id();
             $this->id_balasan = $id;
             return $id;
-        }else{
+        } else {
             $this->db->where('id_balasan', $this->id_balasan);
             $this->db->update($this->table, $array);
             return $this->id_balasan;
@@ -86,8 +88,9 @@ class balasan_m extends CI_Model
         return $id;
     }
 
-    public function delete(){
-        $this->db->delete('balasan', array('id_balasan' => $this->id_balasan)); 
+    public function delete()
+    {
+        $this->db->delete('balasan', array('id_balasan' => $this->id_balasan));
         return true;
     }
 }
