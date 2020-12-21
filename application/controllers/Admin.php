@@ -76,8 +76,6 @@ class Admin extends CI_Controller
     }
     public function dologin()
     {
-        echo "<pre>";
-        var_dump($_POST);
         if (!isset($_POST['email']) || !isset($_POST['password'])) {
             redirect("Admin/login");
         }
