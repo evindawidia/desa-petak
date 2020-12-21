@@ -205,4 +205,11 @@ class Home extends CI_Controller
         $this->load->view('home/covid', $data);
         $this->load->view('home/footer', $data);
     }
+    public function newnormal()
+    {
+        $data['Berita'] = $this->berita->get("", "", "id_berita Desc", "4");
+        $this->load->view('home/header', $data);
+        $this->load->view('home/newnormal', $data);
+        $this->load->view('home/footer', $data);
+    }
 }

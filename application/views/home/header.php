@@ -73,7 +73,7 @@
 					<!--LOGO-->
 					<div id="logo">
 						<a href="<?= base_url() ?>" class="logo" data-dark-logo="<?php echo base_url(); ?>public/assets/images/logokab.png">
-							<img src="<?php echo base_url(); ?>public/assets/images/logokab.png" alt="Polo Logo" style="padding : 10px">
+							<img src="<?php echo base_url(); ?>public/assets/images/headerhome.png" alt="Logo Desa" style="padding : 10px">
 						</a>
 					</div>
 					<!--END: LOGO-->
@@ -126,7 +126,7 @@
 									<li><a href="<?= base_url() ?>Home/pengaduan">Pengaduan Masyarakat<i class="fa fa-megaphone"></i></a>
 									<li class="dropdown"> <a href="#">Covid 19 <i class="fa fa-angle-down"></i> </a>
 										<ul class="dropdown-menu">
-											<li><a href="<?= base_url() ?>Home/covid19"><i class="fa fa-ambulance"></i> New Normal</a></li>
+											<li><a href="<?= base_url() ?>Home/newnormal"><i class="fa fa-ambulance"></i> New Normal</a></li>
 											<li><a href="<?= base_url() ?>Home/covid19"><i class="fa fa-ambulance"></i> Peta Sebaran</a></li>
 										</ul>
 									</li>

@@ -7,8 +7,8 @@
             <div class="post-content post-modern post-content-single col-md-9">
                 <!-- Post item-->
                 <div class="post-item">
-                    <div class="post-image">
-                        <a href="#">
+                    <div class="post-image gallery">
+                        <a href="<?= $berita->getImage() ?>" data-src="<?= $berita->getImage() ?>">
                             <img alt="" src="<?= $berita->getImage() ?>" style="width:300px">
                         </a>
                     </div>

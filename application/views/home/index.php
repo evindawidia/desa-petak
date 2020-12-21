@@ -31,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-		<div style="background-image:url('https://stptrisakti.ac.id/wp-content/uploads/2016/05/20160531-desaPetak.jpg');" class="owl-bg-img">
+		<div style="background-image:url('https://www.majamojokerto.com/file/content/2020/10/201018064941_majamojokerto.jpg');" class="owl-bg-img">
 			<div class="container-fullscreen">
 				<div class="text-middle">
 					<div class="container" style="background: rgba(255,255,255,0.6);padding: 20px;">
@@ -55,10 +55,10 @@
 			<div class="col-md-4">
 				<div class="icon-box effect square medium color">
 					<div class="icon">
-						<a href="#"><i class="fa fa-map"></i></a>
+						<a href="<?= base_url() ?>Home/gambaranumum"><i class="fa fa-map"></i></a>
 					</div>
-					<a href="#">
-						<h3>Batas - Batas Desa</h3>
+					<a href="<?= base_url() ?>Home/gambaranumum">
+						<h3>Gambaran Umum Desa</h3>
 					</a>
 					<p>Desa Petak berbatasan dengan 6 Desa di kecamatan Pacet. Yaitu Desa Warugunung, Desa Bendunganjati, Desa Cempokolimo, Desa Pacet, Desa Sajen, Desa Kesimantengah</p>
 				</div>
@@ -66,9 +66,9 @@
 			<div class="col-md-4">
 				<div class="icon-box effect square medium color">
 					<div class="icon">
-						<a href="#"><i class="fa fa-lightbulb-o"></i></a>
+						<a href="<?= base_url() ?>Home/visimisi"><i class="fa fa-lightbulb-o"></i></a>
 					</div>
-					<a href="#">
+					<a href="<?= base_url() ?>Home/visimisi">
 						<h3>Visi Desa</h3>
 					</a>
 					<p>Aparatur Desa Petak dan Masyarakat setempat sepakat bahwa Visi adalah gambaran umum dari kondisi yang ideal yang dibutuhkan oleh Desa Petak di masa yang akan datang yang dicapai bersama dengan partisipasi masyarakat untuk jangka waktu tertentu.</p>
@@ -78,9 +78,9 @@
 			<div class="col-md-4">
 				<div class="icon-box effect square medium color">
 					<div class="icon">
-						<a href="#"><i class="fa fa-trophy"></i></a>
+						<a href="<?= base_url() ?>Home/visimisi"><i class="fa fa-trophy"></i></a>
 					</div>
-					<a href="#">
+					<a href="<?= base_url() ?>Home/visimisi">
 						<h3>Misi Desa</h3>
 					</a>
 					<p>Selain mempunyai visi, desa Petak juga mempunyai misi yang jelas dan baik.Misi Membangun Perencanaan yang Akuntabel, Misi Mewujudkan penyelenggaraan pertanian yang bermutu, Misi Memberikan Pengembangan Keterampilan dan Kreativitas Masyarakat.</p>
@@ -90,9 +90,9 @@
 			<div class="col-md-4">
 				<div class="icon-box effect square medium color">
 					<div class="icon">
-						<a href="#"><i class="fa fa-globe"></i></a>
+						<a href="<?= base_url() ?>Home/lpm"><i class="fa fa-globe"></i></a>
 					</div>
-					<a href="#">
+					<a href="<?= base_url() ?>Home/lpm">
 						<h3>LPM</h3>
 					</a>
 					<p> Lembaga Pemberdayaan Masyarakat (LPM) adalah salah satu lembaga kemasyaratan yang berada di desa.</p>
@@ -102,9 +102,9 @@
 			<div class="col-md-4">
 				<div class="icon-box effect square medium color">
 					<div class="icon">
-						<a href="#"><i class="fa fa-tree"></i></a>
+						<a href="<?= base_url() ?>Home/sda"><i class="fa fa-tree"></i></a>
 					</div>
-					<a href="#">
+					<a href="<?= base_url() ?>Home/sda">
 						<h3>SDA</h3>
 					</a>
 					<p>Desa Petak memiliki sumber daya alam yang baik dan melimpah, dimana SDA tersebut digunakan dengan baik oleh penduduk desa</p>
@@ -113,9 +113,9 @@
 			<div class="col-md-4">
 				<div class="icon-box effect square medium color">
 					<div class="icon">
-						<a href="#"><i class="fa fa-users"></i></a>
+						<a href="<?= base_url() ?>Home/sdm"><i class="fa fa-users"></i></a>
 					</div>
-					<a href="#">
+					<a href="<?= base_url() ?>Home/sdm">
 						<h3>SDM</h3>
 					</a>
 					<p>Berdasarkan data yang dimiliki Kantor Pemerintah Desa Petak, jumlah penduduk di Desa Petak mencapai 3738 orang. </p>

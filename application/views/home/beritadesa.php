@@ -15,8 +15,8 @@
                     <?php
                     foreach ($Berita as $b) { ?>
                         <div class="post-item" data-animation="fadeInUp" data-animation-delay="0">
-                            <div class="post-image">
-                                <a href="#">
+                            <div class="post-image gallery">
+                                <a href="<?= $b->getImage() ?>" data-src="<?= $b->getImage() ?>">
                                     <img alt="" src="<?= $b->getImage() ?>">
                                 </a>
                             </div>

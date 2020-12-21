@@ -8,7 +8,7 @@
                 <div class="post-item">
                     <div class="post-image">
                         <a href="#">
-                            <img alt="" src="<?php echo base_url(); ?>public/assets/images/cobasejarah.jpg">
+                            <img alt="" src="https://cdn-radar.jawapos.com/uploads/radarmojokerto/news/2017/07/13/balai-desa-termahal-dan-termegah-ini-fotonya_m_970.jpeg">
                         </a>
                     </div>
                     <div class="post-content-details">

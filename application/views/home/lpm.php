@@ -8,7 +8,7 @@
                 <div class="post-item">
                     <div class="post-image">
                         <a href="#">
-                            <img alt="" src="<?php echo base_url(); ?>public/assets/images/cobasejarah.jpg">
+                            <img alt="" src="https://asset.kompas.com/crops/E6yIUW-qeRszhUYBw7d9pv9ae0g=/0x0:1200x800/750x500/data/photo/2020/06/29/5ef9b37e23c81.jpg">
                         </a>
                     </div>
                     <div class="post-content-details">
